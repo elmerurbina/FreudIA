@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Editar mi perfil</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/perfil_profesional.css' %}">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+</head>
+<body>
+    <!-- Logo -->
+    <h1 class="logo">Freud&nbsp;<span>IA</span></h1>
+
+    <div class="container">
+        <!-- Header -->
+        <h1>Editar mi perfil</h1>
+
+        <form action="{% url 'editar_perfil' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label for="foto"> <!-- Icon --> <i class="fa-solid fa-image"></i> Foto de perfil:</label>
+            <input type="file" id="foto" name="foto"><br><br>
+
+            <label for="nombre"> <!-- Icon --> <i class="fa-solid fa-user"></i> Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ form.nombre.value }}"><br><br>
+
+            <label for="ubicacion"> <!-- Icon --> <i class="fa-solid fa-location-dot"></i> Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion" value="{{ form.ubicacion.value }}"><br><br>
+
+            <label for="contacto"> <!-- Icon --> <i class="fa-solid fa-phone"></i> Contacto:</label>
+            <input type="text" id="contacto" name="contacto" value="{{ form.contacto.value }}"><br><br>
+
+            <label for="licencia"> <!-- Icon --> <i class="fa-solid fa-id-card"></i> Licencia:</label>
+            <input type="text" id="licencia" name="licencia" value="{{ form.licencia.value }}"><br><br>
+
+            <label for="estudios_academicos"> <!-- Icon --> <i class="fa-solid fa-graduation-cap"></i> Estudios Académicos:</label><br>
+            <textarea id="estudios_academicos" name="estudios_academicos">{{ form.estudios_academicos.value }}</textarea><br><br>
+
+            <label for="keywords">Keywords (separados por comas):</label>
+            <input type="text" id="keywords" name="keywords" value="{{ form.keywords.value }}"><br><br>
+
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" name="descripcion">{{ form.descripcion.value }}</textarea><br><br>
+
+            <!-- Submit button -->
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
+</body>
+</html>

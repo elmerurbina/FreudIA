@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/perfilUsuario.css' %}">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+</head>
+<body>
+    <div class="container">
+        <h1>Mi perfil</h1>
+        <div class="profile">
+            <img src="{% static photo_path %}" alt="Profile Picture">
+            <div class="info">
+                <p><strong>Nombre:</strong> {{ full_name }}</p>
+                <p><strong>Usuario:</strong> {{ username }}</p>
+            </div>
+            <a href="{% url 'edit_profile' %}">
+                <button class="editar">Editar mi perfil</button>
+            </a>
+        </div>
+        <a href="{% url 'logout' %}">Cerrar Sesión</a>
+    </div>
+</body>
+</html>

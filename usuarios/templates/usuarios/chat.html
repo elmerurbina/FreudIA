@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <!-- Conexion con el archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+    <!-- Conexion con fontawesome para cargar los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Conexion con boxicons sitio del cual se consiguio una parte de los iconos -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Conexion con el archivo JS que cumple la funcion de procesar los chats -->
+    <script src="{% static 'js/chat.js' %}"></script>
+</head>
+
+<body>
+    <!-- Foto de perfil del usuario -->
+    <a href="{% url 'userProfile' %}">
+        <img src="{% static 'images/usuario.jpg' %}" alt="Mi perfil" class="profile-photo">
+    </a>
+
+    <!-- Menu -->
+    <nav class="sidebar close">
+        <header>
+            <!-- Logo -->
+            <div class="text logo">
+                <span class="name">Freud AI</span>
+                <!-- Texto de bienvenida -->
+                <span class="welcome">Te da la bienvenida</span>
+            </div>
+            <i class="bx bx-menu toggle"></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="plans">
+                    <a href="{% url 'subscripcionesUsuario' %}">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="text nav-text">Suscripciones</span>
+                    </a>
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'redApoyo' %}">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                            <span class="text nav-text">Red de Apoyo</span>
+                        </a>
+                    </li>
+
+                    <!-- Accede al historial de mensajes -->
+                    <li class="nav-link">
+                        <a href="{% url 'historial' %}">
+                            <i class="bx bx-conversation icon"></i>
+                            <span class="text nav-text">Ver Historial</span>
+                        </a>
+                    </li>
+
+                    <!-- Opcion para recibir feedback de los usuarios -->
+                    <li class="nav-link active" id="feedback-link">
+                        <a href="#">
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="text nav-text">Calificanos</span>
+                        </a>
+                    </li>
+
+                    <!-- Lleva a los usuarios a seccion de psicologos -->
+                    <li class="nav-link">
+                        <a href="{% url 'profesionales' %}">
+                            <i class="bx bx-user icon"></i>
+                            <span class="text nav-text">Profesionales</span>
+                        </a>
+                    </li>
+
+                    <!-- Funcion que le permite al usuario escribir un comentario -->
+                    <div id="feedback-form" style="display: none;">
+                        <form id="user-feedback-form">
+                            <textarea id="feedback-comment" placeholder="Escribe tu comentario..."></textarea>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+
+                    <!-- Estilos para mostrar un mensaje cuando el usuario envie su comentario -->
+                    <div id="success-message" style="display: none; color: rgb(22, 252, 22);"></div>
+
+                    <!-- Link para acceder a la configuracion de notificaciones -->
+                    <li class="nav-link">
+                        <a href="{% url 'notificaciones' %}">
+                            <i class="bx bx-bell icon"></i>
+                            <span class="text nav-text">Notificaciones</span>
+                        </a>
+                    </li>
+
+                    <!-- Salir del chatbot/cerrar sesion -->
+                    <li>
+                        <a href="{% url 'home' %}" id="logoutButton">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="text nav-text">Salir</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <!-- Mensaje de bienvenida en la parte central de la pagina -->
+        <div class="text">
+            <i class="fa-solid fa-brain"></i> Bienvenido a Freud AI
+
+            <!-- Mensajes en el centro de la pagina para guiar al usuario -->
+            <div class="chat-message" id="message1"><i class="fa-brands fa-fly"></i> ¡Estoy aquí para ayudarte siempre!</div>
+            <div class="chat-message" id="message2"><i class="fa-solid fa-handshake-angle"></i> ¿Dime cómo puedo hacerlo hoy?</div>
+        </div>
+
+        <div class="message-input">
+            <input type="text" id="messageInput" placeholder="Escribe tu mensaje...">
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
+        <div class="message-container" id="messageContainer">
+        </div>
+    </section>
+
+    <!-- Conexiones con JavaScript -->
+    <script type="text/javascript" src="{% static 'js/menu.js' %}"></script> <!-- Funcion del menu -->
+    <script src="{% static 'js/input.js' %}"></script> <!-- Funcion del input -->
+    <script src="{% static 'js/logout.js' %}"></script> <!-- Funcion para cerrar sesion -->
+    <script src="{% static 'js/chat.js' %}"></script> <!-- Funcion para recibir y enviar mensajes -->
+    <script src="{% static 'js/feedback.js' %}"></script> <!-- Funcion para escribir comentario -->
+</body>
+</html>

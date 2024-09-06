@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Psicólogo</title>
+    <!--Link de fontawesome.com para los iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Conexión con el archivo CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/expediente.css' %}">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <!--Menú superior-->
+            <li><a href="{% url 'home' %}">Inicio</a></li> <!--Regresar al index-->
+            <li><a href="#" id="access-code">Nuevo perfil</a></li>
+            <li><a href="#" id="norms-terms">Normativa</a></li> <!--Ver las normas a las que están sujetos-->
+            <li><a href="#" id="access-terms">Términos de Acceso</a></li> <!--Ver los términos para acceder al expediente-->
+            <li><a href="#" id="profile-link">Ver mi Perfil</a></li> <!--Permite ver y editar el perfil-->
+            <li><a href="#" id="support-link">Soporte</a></li> <!--Mostrar información de contacto-->
+        </ul>
+
+        <div id="access-code-input-container" style="display: none;">
+            <label for="access-code-input">Ingrese su código de acceso:</label>
+            <input type="text" id="access-code-input" placeholder="Código de acceso">
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+        <div id="license-input-container"> <!-- Inicialmente oculto -->
+            <label for="license-input">Digite su licencia:</label>
+            <input type="text" id="license-input" name="license-input">
+            <i id="submit-license" class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!--Conexiones con JavaScript-->
+        <script src="{% static 'js/soporte.js' %}"></script> <!--Información de contacto-->
+        <script src="{% static 'js/acceso.js' %}"></script> <!--Mostrar los términos de acceso-->
+        <script src="{% static 'js/normas.js' %}"></script> <!--Mostrar la normativa-->
+        <script src="{% static 'js/digitarLicencia.js' %}"></script> <!--Permitir digitalizar su licencia-->
+        <script src="{% static 'js/codigoAcceso.js' %}"></script>
+    </nav>
+</header>
+
+<main>
+    <section id="user-records">
+        <!--Encabezado-->
+        <h2>Acceder al expediente de su paciente</h2>
+        <!--Formulario para acceder a un expediente determinado-->
+        <form action="{% url 'panelPsicologo' %}" method="post">
+            {% csrf_token %}
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" placeholder="Ingrese el nombre de usuario sin @" required>
+            <input type="submit" value="Acceder">
+        </form>
+        <!--Mensaje de error-->
+        {% if error_message %}
+        <p>{{ error_message }}</p>
+        {% endif %}
+        <!--Link para acceder con las credenciales del usuario-->
+        <p><a href="{% url 'login' %}">Acceder con credenciales (email y contraseña)</a></p>
+    </section>
+</main>
+
+</body>
+</html>

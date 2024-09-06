@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/expedientePaciente.css' %}">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+</head>
+<body>
+
+    <h1>Expediente</h1>
+
+    <!-- Buttons for adding new entries -->
+    <div class="button-container">
+        <button class="add-button" data-form="addPrescriptionForm">Agregar Receta</button>
+        <button class="add-button" data-form="addDiagnosticTestForm">Agregar Prueba Diagnóstica</button>
+        <button class="add-button" data-form="addMedicalHistoryForm">Agregar Historial Médico</button>
+    </div>
+
+    <!-- Passkey Modal -->
+    <div id="passkeyModal" class="modal" data-form="">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p>Introduce la clave de acceso:</p>
+            <input type="password" id="passkeyInput" placeholder="Clave de acceso">
+            <button id="passkeySubmit">Enviar</button>
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Forms for adding new entries, initially hidden -->
+    <div id="formsContainer">
+        <form id="addPrescriptionForm" class="entry-form" action="{% url 'add_prescription' %}" method="post" style="display: none;">
+            {% csrf_token %}
+            <h3>Agregar Receta</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="medicamento">Medicamento:</label>
+            <input type="text" id="medicamento" name="medicamento" required>
+            <button type="submit">Agregar Receta</button>
+        </form>
+
+        <form id="addDiagnosticTestForm" class="entry-form" action="{% url 'add_diagnostic_test' %}" method="post" style="display: none;">
+            {% csrf_token %}
+            <h3>Agregar Prueba Diagnóstica</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="prueba">Prueba:</label>
+            <input type="text" id="prueba" name="prueba" required>
+            <label for="resultado">Resultado:</label>
+            <input type="text" id="resultado" name="resultado" required>
+            <button type="submit">Agregar Prueba Diagnóstica</button>
+        </form>
+
+        <form id="addMedicalHistoryForm" class="entry-form" action="{% url 'add_medical_history' %}" method="post" style="display: none;">
+            {% csrf_token %}
+            <h3>Agregar Historial Médico</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <button type="submit">Agregar Historial Médico</button>
+        </form>
+    </div>
+
+    <!-- Patient Information Section -->
+    <section id="patientInformation">
+        <h2>Información del Paciente</h2>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <td id="patientName">{{ patient_info.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td id="patientAge">{{ age }} años</td>
+            </tr>
+            <!-- Add more patient information here -->
+        </table>
+    </section>
+
+    <!-- Medical History Section -->
+    <section id="medicalHistory">
+        <h2>Historial Médico</h2>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            {% for history_entry in patient_info.historial_medico %}
+            <tr>
+                <td>{{ history_entry.fecha }}</td>
+                <td>{{ history_entry.descripcion }}</td>
+                <!-- Add more medical history entries here -->
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <!-- Prescriptions Section -->
+    <section id="prescriptions">
+        <h2>Recetas</h2>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Medicamento</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            {% for prescription_entry in patient_info.recetas %}
+            <tr>
+                <td>{{ prescription_entry.fecha }}</td>
+                <td>{{ prescription_entry.medicamento }}</td>
+                <!-- Add more prescriptions here -->
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <!-- Diagnostic Tests Section -->
+    <section id="diagnosticTests">
+        <h2>Pruebas Diagnósticas</h2>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Prueba</th>
+                <th>Resultado</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            {% for test_entry in patient_info.pruebas_diagnosticas %}
+            <tr>
+                <td>{{ test_entry.fecha }}</td>
+                <td>{{ test_entry.prueba }}</td>
+                <td>{{ test_entry.resultado }}</td>
+                <!-- Add more diagnostic test entries here -->
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <!-- Frequent Messages Section -->
+    <section id="frequentMessages">
+        <h2>Mensajes Frecuentes</h2>
+        <div class="message">
+            <p>Aquí van los mensajes que el paciente escribe constantemente en el chat.</p>
+        </div>
+        <!-- Add more frequent messages here -->
+    </section>
+
+    <script src="{% static 'js/expedienteButtons.js' %}"></script>
+</body>
+</html>
