@@ -8,6 +8,9 @@ import SignIn from './interfaces/Authentication/SignIn'; // Import SignIn compon
 import SignUp from './interfaces/Authentication/SignUp'; // Correctly import SignUp component
 import SupportForm from "./interfaces/SupportForm/SupportForm";
 import RecoverAccount from './interfaces/Authentication/RecoverAccount'; // Import RecoverAccount component
+import IdentificationPanel from "./interfaces/IdentificationPanel/IdentificationPanel";
+import Reportes from "./interfaces/Reportes/Reportes"; // Import the Reportes component
+import GoalsManager from "./interfaces/GolasManager/GoalsManager";
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -23,6 +26,9 @@ const App = () => {
             <Route path="/sign-up" element={<SignUp />} /> {/* Route for Sign Up */}
             <Route path="/recover-account" element={<RecoverAccount />} /> {/* Route for Recover Account */}
             <Route path="/red-de-apoyo" element={<SupportForm />} />
+            <Route path="/identification" element={<IdentificationPanel />} />
+            <Route path="/psicologos/reportes" element={<Reportes />} /> {/* New route for Reportes */}
+            <Route path="/goals" element={<GoalsManager />} />
           </Routes>
         </main>
         <Footer />

@@ -1,0 +1,70 @@
+/* IdentificationPanel.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+}
+
+.identification-container {
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 200px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.message.error {
+  color: #d9534f; /* Bootstrap danger color */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border-color: #5cb85c; /* Bootstrap success color */
+  outline: none;
+}
+
+.button {
+  text-align: center;
+}
+
+.button button {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);  /* Bootstrap success color */
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.button button:hover {
+  background: linear-gradient(135deg, #89c4f4, #a4d4f4);/* Darken on hover */
+}
+
+.button button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

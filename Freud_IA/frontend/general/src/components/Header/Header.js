@@ -1,9 +1,17 @@
-import React from 'react';  
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation  
-import './Header.css';  
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation
+import './Header.css';
 
-const Header = () => {  
+const Header = () => {
   const navigate = useNavigate(); // Initialize navigate function
+
+  // Function to handle navigation for Psicologos and Socios items
+  const handleIdentificationClick = (e) => {
+    const clickedItem = e.target.innerText; // Get the clicked item text
+
+    // Redirect to the IdentificationPanel and pass the clicked item
+    navigate('/identification', { state: { clickedItem } });
+  };
 
   // Function to handle navigation to sign-in for dropdown items, passing the target route
   const handleUserClick = (e) => {
@@ -13,7 +21,7 @@ const Header = () => {
     // Determine target route based on clicked item
     switch (clickedItem) {
       case 'Objetivos':
-        targetRoute = '/objetivos';
+        targetRoute = '/goals';
         break;
       case 'Expediente':
         targetRoute = '/expediente';
@@ -56,10 +64,10 @@ const Header = () => {
             Psicologos
             <div className="dropdown">
               <ul>
-                <li>Contactar un Psicologo</li>
-                <li>Perfil</li>
-                <li>Reportes</li>
-                <li>Directiva</li>
+                <li onClick={handleIdentificationClick}>Contactar un Psicologo</li>
+                <li onClick={handleIdentificationClick}>Perfil</li>
+                <li onClick={handleIdentificationClick}>Reportes</li>
+                <li onClick={handleIdentificationClick}>Directiva</li>
               </ul>
             </div>
           </li>
@@ -68,9 +76,8 @@ const Header = () => {
             <div className="dropdown">
               <ul>
                 <li>
-                  <Link to="/agentes-ia">Agentes de IA</Link>  {/* Link to Agentes IA */}
+                  <Link to="/agentes-ia">Agentes de IA</Link> {/* Link to Agentes IA */}
                 </li>
-                {/* Apply onClick handler for the rest */}
                 <li onClick={handleUserClick}>Objetivos</li>
                 <li onClick={handleUserClick}>Expediente</li>
                 <li onClick={handleUserClick}>Red de Apoyo</li>
@@ -79,32 +86,32 @@ const Header = () => {
                 <li onClick={handleUserClick}>Cuenta</li>
               </ul>
             </div>
-          </li>  
-          <li>  
-            Lugares  
-            <div className="dropdown">  
-              <ul>  
-                <li>Para correr</li>  
-                <li>Relajarme</li>  
-                <li>Meditar</li>  
-                <li>Lugares turísticos cerca de mí</li>  
-              </ul>  
-            </div>  
-          </li>  
-          <li>  
-            Socios  
-            <div className="dropdown">  
-              <ul>  
-                <li>Aseguradoras</li>  
-                <li>Clinicas</li>  
-                <li>Farmacias</li>  
-              </ul>  
-            </div>  
-          </li>  
-        </ul>  
-      </nav>  
-    </header>  
-  );  
-};  
+          </li>
+          <li>
+            Lugares
+            <div className="dropdown">
+              <ul>
+                <li>Para correr</li>
+                <li>Relajarme</li>
+                <li>Meditar</li>
+                <li>Lugares turísticos cerca de mí</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            Socios
+            <div className="dropdown">
+              <ul>
+                <li onClick={handleIdentificationClick}>Aseguradoras</li>
+                <li onClick={handleIdentificationClick}>Clinicas</li>
+                <li onClick={handleIdentificationClick}>Farmacias</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;
