@@ -1,0 +1,16 @@
+/* General Styles */
+
+
+.app-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange children in a column */
+  min-height: 100vh; /* Minimum height of the viewport */
+}
+
+.auth-container {
+  flex: 1; /* This allows the auth container to grow and take available space */
+  display: flex; /* Use flexbox for centering content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  padding: 20px; /* Add some padding */
+}
