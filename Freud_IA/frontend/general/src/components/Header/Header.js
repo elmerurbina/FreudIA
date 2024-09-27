@@ -5,44 +5,70 @@ import './Header.css';
 const Header = () => {  
   const navigate = useNavigate(); // Initialize navigate function
 
-  // Function to handle navigation to sign-in for dropdown items other than Agentes IA
+  // Function to handle navigation to sign-in for dropdown items, passing the target route
   const handleUserClick = (e) => {
     const clickedItem = e.target.innerText;
+    let targetRoute = '/';
+
+    // Determine target route based on clicked item
+    switch (clickedItem) {
+      case 'Objetivos':
+        targetRoute = '/objetivos';
+        break;
+      case 'Expediente':
+        targetRoute = '/expediente';
+        break;
+      case 'Red de Apoyo':
+        targetRoute = '/red-de-apoyo';
+        break;
+      case 'Historial':
+        targetRoute = '/historial';
+        break;
+      case 'Notificaciones':
+        targetRoute = '/notificaciones';
+        break;
+      case 'Cuenta':
+        targetRoute = '/cuenta';
+        break;
+      default:
+        break;
+    }
+
     if (clickedItem !== 'Agentes de IA') {
-      // Redirect to the sign-in page
-      navigate('/sign-in');
+      // Redirect to the sign-in page, passing the intended target route
+      navigate('/sign-in', { state: { from: targetRoute } });
     }
   };
 
-  return (  
-    <header className="header">  
-      <div className="logo">  
-        <span className="freud">FREUD</span>  
-        <span className="ia">IA</span>  
-      </div>  
+  return (
+    <header className="header">
+      <div className="logo">
+        <span className="freud">FREUD</span>
+        <span className="ia">IA</span>
+      </div>
       <p className="slogan">Inteligencia Artificial al Servicio de la Humanidad</p>
-      <nav className="navbar">  
-        <ul>  
+      <nav className="navbar">
+        <ul>
           <li>
-            <Link to="/">Inicio</Link>  
-          </li>  
-          <li>  
-            Psicologos  
-            <div className="dropdown">  
-              <ul>  
-                <li>Contactar un Psicologo</li>  
-                <li>Perfil</li>  
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            Psicologos
+            <div className="dropdown">
+              <ul>
+                <li>Contactar un Psicologo</li>
+                <li>Perfil</li>
                 <li>Reportes</li>
                 <li>Directiva</li>
-              </ul>  
-            </div>  
-          </li>  
-          <li>  
-            Usuarios  
+              </ul>
+            </div>
+          </li>
+          <li>
+            Usuarios
             <div className="dropdown">
               <ul>
                 <li>
-                  <Link to="/agentes-ia">Agentes de IA</Link>  {/* Link to AgentesIA */}
+                  <Link to="/agentes-ia">Agentes de IA</Link>  {/* Link to Agentes IA */}
                 </li>
                 {/* Apply onClick handler for the rest */}
                 <li onClick={handleUserClick}>Objetivos</li>
