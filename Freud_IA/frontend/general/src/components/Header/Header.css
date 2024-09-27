@@ -1,0 +1,96 @@
+.header {
+  background: linear-gradient(
+    150deg,
+    rgba(204, 66, 225, 1) 0%,
+    rgba(77, 34, 150, 1) 16%,
+    rgba(65, 32, 137, 1) 33%,
+    rgba(47, 23, 99, 1) 50%,
+    rgba(31, 13, 65, 1) 65%,
+    rgba(31, 12, 66, 1) 100%
+  );
+  color: white;
+  font-family: 'Helvetica', sans-serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed; /* Fix header to the top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it is above other content */
+}
+
+.logo {
+  font-size: 3rem; /* Size of the logo text */
+  display: flex;
+  align-items: baseline;
+}
+
+.freud {
+  color: #ffffff; /* Color for "FREUD" */
+  margin-right: 0.2rem; /* Spacing between words */
+}
+
+.ia {
+  color: #ee13c4; /* Color for "IA" */
+}
+
+.slogan {
+  font-size: 1.2rem; /* Size for the slogan */
+  margin: 10px 0; /* Spacing above and below the slogan */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navbar ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+  display: flex; /* Horizontal layout for main items */
+  gap: 20px; /* Space between items */
+}
+
+.navbar li {
+  position: relative; /* Position for dropdown */
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.dropdown {
+  visibility: hidden; /* Initially hide dropdown */
+  opacity: 0; /* Make it transparent */
+  transition: opacity 0.3s ease; /* Smooth transition for appearance */
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    rgba(100, 100, 100, 0.09),
+    rgba(100, 100, 100, 0.09)
+  ); /* Background gradient */
+  padding: 10px; /* Reduce padding to fit items better */
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100; /* Ensure dropdown is above other elements */
+  display: none; /* Hide the dropdown by default */
+}
+
+/* Ensure dropdown items stack vertically */
+.dropdown ul {
+  list-style-type: none; /* Remove bullets from dropdown list */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Keep flex to control alignment */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.navbar li:hover .dropdown {
+  visibility: visible; /* Make it visible on hover */
+  opacity: 1; /* Fully opaque on hover */
+  display: block; /* Show the dropdown on hover */
+}
+
+/* Hover effect for dropdown items */
+.dropdown li:hover {
+  color: rgba(205, 66, 225, 1); /* Light hover effect */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
