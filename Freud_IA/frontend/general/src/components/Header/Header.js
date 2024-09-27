@@ -1,9 +1,19 @@
-// src/components/Header/Header.js  
 import React from 'react';  
-import { Link } from 'react-router-dom'; // Import Link for navigation  
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation  
 import './Header.css';  
 
 const Header = () => {  
+  const navigate = useNavigate(); // Initialize navigate function
+
+  // Function to handle navigation to sign-in for dropdown items other than Agentes IA
+  const handleUserClick = (e) => {
+    const clickedItem = e.target.innerText;
+    if (clickedItem !== 'Agentes de IA') {
+      // Redirect to the sign-in page
+      navigate('/sign-in');
+    }
+  };
+
   return (  
     <header className="header">  
       <div className="logo">  
@@ -22,22 +32,26 @@ const Header = () => {
               <ul>  
                 <li>Contactar un Psicologo</li>  
                 <li>Perfil</li>  
-                <li>Reportes</li>  
+                <li>Reportes</li>
+                <li>Directiva</li>
               </ul>  
             </div>  
           </li>  
           <li>  
             Usuarios  
-            <div className="dropdown">  
-              <ul>  
-                <li>  
-                 <Link to="/agentes-ia">Agentes de IA</Link>  {/* Link to AgentesIA */}
-                </li>  
-                <li>Historial</li>  
-                <li>Notificaciones</li>  
-                <li>Perfil</li>  
-              </ul>  
-            </div>  
+            <div className="dropdown">
+              <ul>
+                <li>
+                  <Link to="/agentes-ia">Agentes de IA</Link>  {/* Link to AgentesIA */}
+                </li>
+                {/* Apply onClick handler for the rest */}
+                <li onClick={handleUserClick}>Objetivos</li>
+                <li onClick={handleUserClick}>Expediente</li>
+                <li onClick={handleUserClick}>Historial</li>
+                <li onClick={handleUserClick}>Notificaciones</li>
+                <li onClick={handleUserClick}>Cuenta</li>
+              </ul>
+            </div>
           </li>  
           <li>  
             Lugares  

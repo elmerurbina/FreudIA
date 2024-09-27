@@ -1,0 +1,8 @@
+
+button.recover-btn {
+  background: linear-gradient(90deg, #e26a6a, #e25454);
+}
+
+button.recover-btn:hover {
+  background: linear-gradient(90deg, #e25454, #e26a6a);
+}

@@ -1,10 +1,12 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Dashboard from './interfaces/Dashboard/Dashboard';
 import AgentesIA from './interfaces/AgentesIA/AgentesIA'; // Import AgentesIA component
+import SignIn from './interfaces/Authentication/SignIn'; // Import SignIn component
+import SignUp from './interfaces/Authentication/SignUp.css'; // Import SignUp.css component
+import RecoverAccount from './interfaces/Authentication/RecoverAccount'; // Import RecoverAccount component
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -16,6 +18,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Dashboard />} /> {/* Home route */}
             <Route path="/agentes-ia" element={<AgentesIA />} /> {/* Route for AgentesIA */}
+            <Route path="/sign-in" element={<SignIn />} /> {/* Route for Sign In */}
+            <Route path="/sign-up" element={<SignUp />} /> {/* Route for Sign Up */}
+            <Route path="/recover-account" element={<RecoverAccount />} /> {/* Route for Recover Account */}
           </Routes>
         </main>
         <Footer />
