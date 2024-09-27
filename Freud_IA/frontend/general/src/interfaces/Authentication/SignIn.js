@@ -1,26 +1,34 @@
+// SignIn.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './SignIn.css'; // Import your CSS file here
+import { useNavigate, useLocation } from 'react-router-dom';
+import './SignIn.css';
 
 const SignIn = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-  const [rememberMe, setRememberMe] = useState(false); // State for the checkbox
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [rememberMe, setRememberMe] = useState(false);
 
-  const handleRecoverPassword = () => {
-    navigate('/recover-account'); // Navigate to Recover Password page
-  };
-
-  const handleCreateAccount = () => {
-    navigate('/sign-up'); // Navigate to Sign Up page
-  };
+  // Get the 'from' state, or default to the homepage if not present
+  const from = location.state?.from || '/';
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logic for signing in, including handling remember me if needed
+    // Logic for sign-in (e.g., verify credentials)
+
+    // After successful sign-in, redirect to the target page
+    navigate(from);
+  };
+
+  const handleRecoverPassword = () => {
+    navigate('/recover-account');
+  };
+
+  const handleCreateAccount = () => {
+    navigate('/sign-up');
   };
 
   return (
-    <div className="auth-wrapper"> {/* New wrapper div */}
+    <div className="auth-wrapper">
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -32,14 +40,13 @@ const SignIn = () => {
         <div className="form-group">
           <div className="rememberMe-container">
             <input
-                type="checkbox"
-                id="rememberMe" // Add an id for accessibility
-                checked={rememberMe} // Manage state for checked status
-                onChange={() => setRememberMe(!rememberMe)} // Toggle rememberMe state
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
             />
-            <label htmlFor="rememberMe">Recuérdame</label> {/* Associate label with checkbox */}
+            <label htmlFor="rememberMe">Recuérdame</label>
           </div>
-
         </div>
         <button className="btn-primary" type="submit">Iniciar Sesión</button>
       </form>

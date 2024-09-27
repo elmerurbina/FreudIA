@@ -46,7 +46,7 @@ button.btn-primary {
   margin-top: 25px;
   border: none;
   border-radius: 5px; /* Rounded corners */
-  background: linear-gradient(135deg, #b4d4fc, #89c4f4); /* Pale blue gradient */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Pale blue gradient */
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -54,7 +54,7 @@ button.btn-primary {
 }
 
 button.btn-primary:hover {
-  background: linear-gradient(135deg, #89c4f4, #b3d4f4); /* Reverse gradient on hover */
+  background: linear-gradient(135deg, #89c4f4, #a4d4f4); /* Reverse gradient on hover */
 }  
 
 .links {  
