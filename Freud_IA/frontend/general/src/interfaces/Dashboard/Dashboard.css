@@ -1,0 +1,39 @@
+.dashboard {
+  background: linear-gradient(135deg, rgba(65, 32, 137, 1), rgba(47, 23, 99, 1));
+  color: white; /* Optional: Change text color */
+  padding-top: 500px; /* Increased space for the fixed header */
+  padding: 20px;
+  padding-top: 10px;
+  min-height: 100vh; /* Ensure it fills the viewport height */
+  font-family: 'Helvetica', sans-serif; /* Set the font family to Helvetica */
+}
+
+.about-us {
+  margin-bottom: 30px;
+}
+
+.about-us h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.about-us p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.video-section {
+  margin-bottom: 30px;
+  margin-top: 150px;
+  text-align: center;
+}
+
+video {
+  width: 100%; /* Set video width to 100% of its container */
+  height: auto; /* Keep the aspect ratio */
+  border-radius: 10px; /* Optional: Round video corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for depth */
+}

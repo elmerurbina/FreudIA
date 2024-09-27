@@ -1,0 +1,37 @@
+.footer {
+  background: linear-gradient(135deg, rgba(204, 66, 225, 1), rgba(77, 34, 150, 1));
+  color: white; /* Text color */
+  padding: 20px;
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  position: relative; /* To keep the footer at the bottom */
+}
+
+.footer-nav {
+  margin-bottom: 10px; /* Space below the nav items */
+}
+
+.footer-nav ul {
+  list-style-type: none; /* Remove bullets from list */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Horizontal layout for footer items */
+  flex-direction: column; /* Stack items vertically */
+  gap: 5px; /* Space between items */
+}
+
+.footer-nav li {
+  font-size: 0.7rem; /* Smaller font size for footer items */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Hover effect for footer items */
+.footer-nav li:hover {
+  color: rgba(255, 255, 255, 0.7); /* Change color on hover */
+  text-decoration: underline; /* Optional: add underline effect on hover */
+}
+
+.copyright {
+  font-size: 0.8rem; /* Smaller font size for copyright text */
+  margin-top: 10px; /* Space above copyright text */
+}
