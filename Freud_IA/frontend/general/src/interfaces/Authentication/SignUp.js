@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './SignUp.css'; // Import your CSS file
 
 const SignUp = () => {
@@ -13,7 +12,6 @@ const SignUp = () => {
     apellidos: '',
     pais: '',
     departamento: '',
-    municipio: '',
     fechaNacimiento: '',
     perfilFoto: null,
     estadoPsicologico: ''
@@ -26,15 +24,18 @@ const SignUp = () => {
     number: false
   });
 
+  const [emailValid, setEmailValid] = useState(true); // New state for email validation
+  const [ageValid, setAgeValid] = useState(true); // New state for age validation
   const [countries, setCountries] = useState([]);
   const [departamentos, setDepartamentos] = useState([]);
 
-  // Load countries from an API using Axios
+  // Load countries from local JSON file
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get('https://your-api-endpoint/countries'); // Replace with your actual API endpoint
-        setCountries(response.data); // Assuming the API returns an array of countries
+        const response = await fetch('/countries.json'); // Load local JSON file
+        const data = await response.json();
+        setCountries(data); // Set countries from JSON data
       } catch (error) {
         console.error('Error fetching countries:', error);
       }
@@ -44,14 +45,14 @@ const SignUp = () => {
 
   // Load departments based on the selected country
   useEffect(() => {
-    const fetchDepartamentos = async () => {
+    const fetchDepartamentos = () => {
       if (formData.pais) {
-        try {
-          const response = await axios.get(`https://your-api-endpoint/departamentos/${formData.pais}`); // Replace with your actual API endpoint
-          setDepartamentos(response.data); // Assuming the API returns an array of departments
-        } catch (error) {
-          console.error('Error fetching departments:', error);
-        }
+        fetch('/cities.json')
+          .then((response) => response.json())
+          .then((data) => {
+            setDepartamentos(data[formData.pais] || []); // Get departments based on selected country
+          })
+          .catch((error) => console.error('Error fetching departments:', error));
       } else {
         setDepartamentos([]);
       }
@@ -70,8 +71,35 @@ const SignUp = () => {
     });
   }, [formData.password]);
 
+  // Validate email format
+  useEffect(() => {
+    const validateEmail = () => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setEmailValid(emailRegex.test(formData.email));
+    };
+    validateEmail();
+  }, [formData.email]);
+
+  // Validate age
+  useEffect(() => {
+    const validateAge = () => {
+      const birthDate = new Date(formData.fechaNacimiento);
+      const age = new Date().getFullYear() - birthDate.getFullYear();
+      setAgeValid(age > 10);
+    };
+    validateAge();
+  }, [formData.fechaNacimiento]);
+
   const handleNextStep = (e) => {
     e.preventDefault();
+    if (step === 1 && !emailValid) {
+      alert('Por favor, ingresa un correo electrónico válido.'); // Alert for invalid email
+      return;
+    }
+    if (step === 2 && !ageValid) {
+      alert('Debes tener más de 10 años para registrarte.'); // Alert for invalid age
+      return;
+    }
     setStep(step + 1);
   };
 
@@ -109,6 +137,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
+            {!emailValid && <p className="invalid">Email inválido</p>} {/* Show invalid email message */}
           </div>
           <div className="form-group">
             <input
@@ -145,6 +174,11 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
+            {formData.password && formData.confirmPassword && (
+              <p className={formData.password === formData.confirmPassword ? 'valid' : 'invalid'}>
+                {formData.password === formData.confirmPassword ? '✔ Las contraseñas coinciden' : '✖ Las contraseñas no coinciden'}
+              </p>
+            )}
           </div>
           <button type="submit" className="btn-primary">Siguiente</button>
         </form>
@@ -197,7 +231,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             >
-              <option value="" disabled>Selecciona un Departamento *</option>
+              <option value="" disabled>Selecciona tu Ciudad *</option>
               {departamentos.map((departamento, index) => (
                 <option key={index} value={departamento}>{departamento}</option>
               ))}
@@ -212,6 +246,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
+            {!ageValid && <p className="invalid">Debes tener más de 10 años</p>} {/* Show age message */}
           </div>
           <button onClick={handlePrevStep} className="btn-secondary">Atrás</button>
           <button type="submit" className="btn-primary">Siguiente</button>
@@ -222,20 +257,28 @@ const SignUp = () => {
         <form onSubmit={handleSubmit}>
           <h3>Información Adicional</h3>
           <div className="form-group">
-            <input type="file" id="perfilFoto" name="perfilFoto" onChange={handleFileChange} />
+            <label htmlFor="perfilFoto">Foto de Perfil (archivos permitidos: jpg, png, jpeg):</label>
+            <input
+              type="file"
+              id="perfilFoto"
+              name="perfilFoto"
+              accept=".jpg, .jpeg, .png"
+              onChange={handleFileChange}
+              required
+            />
           </div>
           <div className="form-group">
             <textarea
               id="estadoPsicologico"
               name="estadoPsicologico"
-              placeholder="Describe tu estado psicológico actual"
+              placeholder="Describe tu Estado psicológico *"
               value={formData.estadoPsicologico}
               onChange={handleChange}
+              required
             />
-            <Link to="#" className="soft-link">Llenar este apartado después</Link>
           </div>
           <button onClick={handlePrevStep} className="btn-secondary">Atrás</button>
-          <button type="submit" className="btn-primary">Crear Cuenta</button>
+          <button type="submit" className="btn-primary">Registrar</button>
         </form>
       )}
     </div>

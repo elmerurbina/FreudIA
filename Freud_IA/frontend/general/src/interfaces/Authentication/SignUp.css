@@ -88,6 +88,11 @@
 
 .invalid {
     color: red;
+    font-size: 0.7rem;
+}
+
+.label {
+    font-size: 0.9rem;
 }
 
 /* Styles for soft link */

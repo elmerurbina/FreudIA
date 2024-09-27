@@ -1,0 +1,238 @@
+{
+    "Canada": [
+        "Toronto",
+        "Vancouver",
+        "Montreal",
+        "Calgary",
+        "Ottawa",
+        "Edmonton",
+        "Quebec City"
+    ],
+    "United States": [
+        "New York",
+        "Los Angeles",
+        "Chicago",
+        "Houston",
+        "Phoenix",
+        "Philadelphia",
+        "San Antonio"
+    ],
+    "Mexico": [
+        "Mexico City",
+        "Guadalajara",
+        "Monterrey",
+        "Puebla",
+        "Cancún",
+        "Tijuana",
+        "Mérida"
+    ],
+    "Belize": [
+        "Belmopan",
+        "Belize City",
+        "San Ignacio",
+        "Corozal",
+        "Orange Walk"
+    ],
+    "Costa Rica": [
+        "San José",
+        "Alajuela",
+        "Cartago",
+        "Heredia",
+        "Liberia"
+    ],
+    "El Salvador": [
+        "San Salvador",
+        "Santa Ana",
+        "San Miguel",
+        "Sonsonate",
+        "La Libertad"
+    ],
+    "Guatemala": [
+        "Guatemala City",
+        "Quetzaltenango",
+        "Escuintla",
+        "Mixco",
+        "Villa Nueva"
+    ],
+    "Honduras": [
+        "Tegucigalpa",
+        "San Pedro Sula",
+        "La Ceiba",
+        "Choloma",
+        "El Progreso"
+    ],
+    "Nicaragua": [
+        "Managua",
+        "León",
+        "Granada",
+        "Masaya",
+        "Chinandega",
+        "Chontales",
+        "Rivas"
+    ],
+    "Panama": [
+        "Panama City",
+        "Colón",
+        "David",
+        "Santiago",
+        "Chiriquí"
+    ],
+    "Antigua and Barbuda": [
+        "St. John's",
+        "All Saints",
+        "Liberta"
+    ],
+    "Bahamas": [
+        "Nassau",
+        "Freeport",
+        "West End"
+    ],
+    "Barbados": [
+        "Bridgetown",
+        "Speightstown",
+        "Oistins"
+    ],
+    "Cuba": [
+        "Havana",
+        "Santiago de Cuba",
+        "Camagüey",
+        "Holguín",
+        "Matanzas"
+    ],
+    "Dominica": [
+        "Roseau",
+        "Portsmouth",
+        "Marigot"
+    ],
+    "Dominican Republic": [
+        "Santo Domingo",
+        "Santiago",
+        "La Romana",
+        "San Cristóbal",
+        "Puerto Plata"
+    ],
+    "Grenada": [
+        "St. George's",
+        "Gouyave",
+        "Grenville"
+    ],
+    "Haiti": [
+        "Port-au-Prince",
+        "Cap-Haïtien",
+        "Les Cayes"
+    ],
+    "Jamaica": [
+        "Kingston",
+        "Montego Bay",
+        "Spanish Town",
+        "Portmore"
+    ],
+    "Saint Kitts and Nevis": [
+        "Basseterre",
+        "Charlestown"
+    ],
+    "Saint Lucia": [
+        "Castries",
+        "Gros Islet",
+        "Vieux Fort"
+    ],
+    "Saint Vincent and the Grenadines": [
+        "Kingstown",
+        "Bequia",
+        "Union Island"
+    ],
+    "Trinidad and Tobago": [
+        "Port of Spain",
+        "San Fernando",
+        "Scarborough"
+    ],
+    "Argentina": [
+        "Buenos Aires",
+        "Córdoba",
+        "Rosario",
+        "Mendoza",
+        "La Plata"
+    ],
+    "Bolivia": [
+        "Sucre",
+        "La Paz",
+        "Santa Cruz",
+        "Cochabamba",
+        "Potosí"
+    ],
+    "Brazil": [
+        "Brasília",
+        "São Paulo",
+        "Rio de Janeiro",
+        "Salvador",
+        "Fortaleza"
+    ],
+    "Chile": [
+        "Santiago",
+        "Valparaíso",
+        "Concepción",
+        "La Serena",
+        "Antofagasta"
+    ],
+    "Colombia": [
+        "Bogotá",
+        "Medellín",
+        "Cali",
+        "Barranquilla",
+        "Cartagena"
+    ],
+    "Ecuador": [
+        "Quito",
+        "Guayaquil",
+        "Cuenca",
+        "Santo Domingo",
+        "Machala"
+    ],
+    "Guyana": [
+        "Georgetown",
+        "New Amsterdam",
+        "Anna Regina"
+    ],
+    "Paraguay": [
+        "Asunción",
+        "Ciudad del Este",
+        "Encarnación"
+    ],
+    "Peru": [
+        "Lima",
+        "Arequipa",
+        "Trujillo",
+        "Chiclayo",
+        "Piura"
+    ],
+    "Suriname": [
+        "Paramaribo",
+        "Lelydorp",
+        "Nieuw Nickerie"
+    ],
+    "Uruguay": [
+        "Montevideo",
+        "Salto",
+        "Punta del Este",
+        "Colonia del Sacramento"
+    ],
+    "Venezuela": [
+        "Caracas",
+        "Maracaibo",
+        "Valencia",
+        "Barquisimeto",
+        "Ciudad Guayana"
+    ],
+    "Spain": [
+        "Madrid",
+        "Barcelona",
+        "Valencia",
+        "Sevilla",
+        "Bilbao"
+    ],
+    "Equatorial Guinea": [
+        "Malabo",
+        "Bata",
+        "Ebebiyin"
+    ]
+}
