@@ -65,6 +65,7 @@ button.btn-primary:hover {
 .soft-link {  
   color: #6FB3F3; /* Soft link color */
   font-size: 0.7rem;
+  cursor: pointer;
   text-decoration: none; /* Remove underline */  
   display: block; /* Block to allow margin */
   margin-top: 10px; /* Space above links */

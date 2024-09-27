@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import Dashboard from './interfaces/Dashboard/Dashboard';
 import AgentesIA from './interfaces/AgentesIA/AgentesIA'; // Import AgentesIA component
 import SignIn from './interfaces/Authentication/SignIn'; // Import SignIn component
-import SignUp from './interfaces/Authentication/SignUp.css'; // Import SignUp.css component
+import SignUp from './interfaces/Authentication/SignUp'; // Correctly import SignUp component
 import RecoverAccount from './interfaces/Authentication/RecoverAccount'; // Import RecoverAccount component
 import './App.css'; // Optional: Global styles for the app
 

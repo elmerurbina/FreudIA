@@ -47,6 +47,7 @@ const Header = () => {
                 {/* Apply onClick handler for the rest */}
                 <li onClick={handleUserClick}>Objetivos</li>
                 <li onClick={handleUserClick}>Expediente</li>
+                <li onClick={handleUserClick}>Red de Apoyo</li>
                 <li onClick={handleUserClick}>Historial</li>
                 <li onClick={handleUserClick}>Notificaciones</li>
                 <li onClick={handleUserClick}>Cuenta</li>
