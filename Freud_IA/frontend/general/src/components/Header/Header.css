@@ -62,10 +62,11 @@
   opacity: 0; /* Make it transparent */
   transition: opacity 0.3s ease; /* Smooth transition for appearance */
   position: absolute;
+  color: black;
   background: linear-gradient(
     to bottom,
-    rgba(100, 100, 100, 0.09),
-    rgba(100, 100, 100, 0.09)
+    rgba(220, 220, 220, 1),
+    rgba(220, 220, 220, 1)
   ); /* Background gradient */
   padding: 10px; /* Reduce padding to fit items better */
   border-radius: 5px;
@@ -93,4 +94,38 @@
 .dropdown li:hover {
   color: rgba(205, 66, 225, 1); /* Light hover effect */
   transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+/* Style for the main nav link (Inicio) */
+.navbar ul li a {
+    color: white; /* Set the link color to white */
+    text-decoration: none; /* Remove underline if desired */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+/* Hover effect for the main nav link */
+.navbar ul li a:hover {
+    color: rgba(205, 66, 225, 1); /* Change color on hover */
+}
+
+/* Style for dropdown links */
+.dropdown ul li {
+    color: black; /* Set dropdown item color to black */
+}
+
+/* Optional: Style for dropdown hover effect (if desired) */
+.dropdown ul li:hover {
+    background-color: rgba(205, 66, 225, 0.2); /* Light background on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+/* (Optional) You may want to also style the links within the dropdown if clickable */
+.dropdown ul li a {
+    color: black; /* Ensure that dropdown links are black */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Hover effect for dropdown links */
+.dropdown ul li a:hover {
+    color: rgba(205, 66, 225, 1); /* Change color on hover */
 }
