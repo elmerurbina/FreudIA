@@ -8,6 +8,8 @@ const PsychologistsDirective = () => {
   const [showPsicologos, setShowPsicologos] = useState(false);
   const [showDirectivoForm, setShowDirectivoForm] = useState(false);
   const [showPsicologoForm, setShowPsicologoForm] = useState(false);
+  const [isEditingDirectivo, setIsEditingDirectivo] = useState(false);
+  const [isEditingPsicologo, setIsEditingPsicologo] = useState(false);
 
   // Directivo Form Fields
   const [directivoName, setDirectivoName] = useState('');
@@ -21,9 +23,14 @@ const PsychologistsDirective = () => {
   const [experiencia, setExperiencia] = useState('');
   const [palabrasClaves, setPalabrasClaves] = useState(['', '', '', '', '']);
 
+  // Submit handlers
   const handleDirectivoSubmit = (e) => {
     e.preventDefault();
-    console.log({ directivoName, codigoAcceso });
+    if (isEditingDirectivo) {
+      console.log("Directivo Edited:", { directivoName, codigoAcceso });
+    } else {
+      console.log("New Directivo Added:", { directivoName, codigoAcceso });
+    }
     // Reset form
     setDirectivoName('');
     setCodigoAcceso('');
@@ -32,7 +39,11 @@ const PsychologistsDirective = () => {
 
   const handlePsicologoSubmit = (e) => {
     e.preventDefault();
-    console.log({ psicologoName, psicologoApellido, licencia, estudios, experiencia, palabrasClaves });
+    if (isEditingPsicologo) {
+      console.log("Psicologo Edited:", { psicologoName, psicologoApellido, licencia, estudios, experiencia, palabrasClaves });
+    } else {
+      console.log("New Psicologo Added:", { psicologoName, psicologoApellido, licencia, estudios, experiencia, palabrasClaves });
+    }
     // Reset form
     setPsicologoName('');
     setPsicologoApellido('');
@@ -41,6 +52,48 @@ const PsychologistsDirective = () => {
     setExperiencia('');
     setPalabrasClaves(['', '', '', '', '']);
     setShowPsicologoForm(false);
+  };
+
+  // Delete handlers
+  const handleDeleteDirectivo = () => {
+    const accessCode = prompt("Por favor, ingrese el código de acceso para eliminar:");
+    if (accessCode) {
+      console.log("Directivo Deleted with access code:", accessCode);
+      // Add your delete logic here
+    } else {
+      console.log("Delete canceled");
+    }
+  };
+
+  const handleDeletePsicologo = () => {
+    const licenciaInput = prompt("Por favor, ingrese la licencia para eliminar:");
+    if (licenciaInput) {
+      console.log("Psicologo Deleted with license:", licenciaInput);
+      // Add your delete logic here
+    } else {
+      console.log("Delete canceled");
+    }
+  };
+
+  // Edit handlers
+  const handleEditDirectivo = () => {
+    setIsEditingDirectivo(true);
+    setShowDirectivoForm(true);
+    // Pre-fill the form fields with existing data (assuming the data is available)
+    setDirectivoName('Existing Name');
+    setCodigoAcceso('Existing Code');
+  };
+
+  const handleEditPsicologo = () => {
+    setIsEditingPsicologo(true);
+    setShowPsicologoForm(true);
+    // Pre-fill the form fields with existing data (assuming the data is available)
+    setPsicologoName('Existing Name');
+    setPsicologoApellido('Existing Last Name');
+    setLicencia('Existing License');
+    setEstudios('Existing Studies');
+    setExperiencia('Existing Experience');
+    setPalabrasClaves(['Existing', 'Keywords']);
   };
 
   return (
@@ -54,12 +107,12 @@ const PsychologistsDirective = () => {
         {showDirectivos && (
           <div className="expandable-options">
             <button className="action-button" onClick={() => setShowDirectivoForm(!showDirectivoForm)}>
-              <FontAwesomeIcon icon={faUserPlus} /> Agregar
+              <FontAwesomeIcon icon={faUserPlus} /> {showDirectivoForm ? 'Cerrar' : 'Agregar'}
             </button>
-            <button className="action-button">
+            <button className="action-button" onClick={handleDeleteDirectivo}>
               <FontAwesomeIcon icon={faUserMinus} /> Eliminar
             </button>
-            <button className="action-button">
+            <button className="action-button" onClick={handleEditDirectivo}>
               <FontAwesomeIcon icon={faUserEdit} /> Editar
             </button>
 
@@ -87,7 +140,7 @@ const PsychologistsDirective = () => {
                     required
                   />
                 </div>
-                <button className="action-button" type="submit">Agregar Directivo</button>
+                <button className="action-button" type="submit">{isEditingDirectivo ? 'Guardar Cambios' : 'Agregar Directivo'}</button>
               </form>
             )}
           </div>
@@ -99,12 +152,12 @@ const PsychologistsDirective = () => {
         {showPsicologos && (
           <div className="expandable-options">
             <button className="action-button" onClick={() => setShowPsicologoForm(!showPsicologoForm)}>
-              <FontAwesomeIcon icon={faUserPlus} /> Agregar
+              <FontAwesomeIcon icon={faUserPlus} /> {showPsicologoForm ? 'Cerrar' : 'Agregar'}
             </button>
-            <button className="action-button">
+            <button className="action-button" onClick={handleDeletePsicologo}>
               <FontAwesomeIcon icon={faUserMinus} /> Eliminar
             </button>
-            <button className="action-button">
+            <button className="action-button" onClick={handleEditPsicologo}>
               <FontAwesomeIcon icon={faUserEdit} /> Editar
             </button>
 
@@ -166,7 +219,7 @@ const PsychologistsDirective = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="palabrasClaves">Palabras Claves (max 5):</label>
+                  <label htmlFor="palabrasClaves">Palabras Claves:</label>
                   {palabrasClaves.map((palabra, index) => (
                     <input
                       key={index}
@@ -181,7 +234,7 @@ const PsychologistsDirective = () => {
                     />
                   ))}
                 </div>
-                <button className="action-button" type="submit">Agregar Psicologo</button>
+                <button className="action-button" type="submit">{isEditingPsicologo ? 'Guardar Cambios' : 'Agregar Psicologo'}</button>
               </form>
             )}
           </div>
