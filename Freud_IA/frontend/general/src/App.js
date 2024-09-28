@@ -11,6 +11,7 @@ import RecoverAccount from './interfaces/Authentication/RecoverAccount'; // Impo
 import IdentificationPanel from "./interfaces/IdentificationPanel/IdentificationPanel";
 import Reportes from "./interfaces/Reportes/Reportes"; // Import the Reportes component
 import GoalsManager from "./interfaces/GolasManager/GoalsManager";
+import PsychologistsDirective from "./interfaces/PsychologistsDirective/PsychologistsDirective";
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/identification" element={<IdentificationPanel />} />
             <Route path="/psicologos/reportes" element={<Reportes />} /> {/* New route for Reportes */}
             <Route path="/goals" element={<GoalsManager />} />
+            <Route path="/psicologos/directive" element={<PsychologistsDirective />} />
           </Routes>
         </main>
         <Footer />

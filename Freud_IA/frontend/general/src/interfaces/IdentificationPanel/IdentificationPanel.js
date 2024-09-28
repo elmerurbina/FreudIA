@@ -32,7 +32,7 @@ const IdentificationPanel = () => {
           navigate('/psicologos/reportes');
           break;
         case 'Directiva':
-          navigate('/psicologos/directiva');
+          navigate('/psicologos/directive');
           break;
         case 'Aseguradoras':
           navigate('/socios/aseguradoras');
