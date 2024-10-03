@@ -1,0 +1,89 @@
+.lugares-para-correr {
+  padding: 100px;
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.encabezado-favoritos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.icono-correr {
+  margin-left: 10px;
+  color: #4CAF50;
+}
+
+.contenedor-lugares {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.tarjeta-lugar {
+  background: linear-gradient(120deg, #3E8E41, #6CBF4A); /* Darker green gradient */
+  border-radius: 10px;
+  font-family: 'Helvetica', sans-serif;
+  width: 250px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for card effect */
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.tarjeta-lugar:hover {
+  transform: scale(1.05); /* Grow slightly on hover */
+}
+
+.imagen-lugar {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px; /* Rounded corners for image */
+}
+
+h3 {
+  color: white;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+p {
+  color: #E0F7FA;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.icono-favorito {
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s; /* Smooth transition for favorite icon */
+}
+
+.icono-favorito.favorito {
+  color: gold; /* Change to gold when favorited */
+}
+
+.recomendaciones-link {
+  margin-top: 30px;
+}
+
+.recomendaciones-link p {
+  font-size: 16px;
+  color: #4CAF50;
+}
+
+.recomendaciones-link a {
+  color: #0288D1;
+  text-decoration: none;
+}
+
+.recomendaciones-link a:hover {
+  text-decoration: underline; /* Add underline on hover for the link */
+}

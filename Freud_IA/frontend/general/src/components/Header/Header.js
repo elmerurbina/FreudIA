@@ -56,7 +56,7 @@ const Header = () => {
     // Determine target route based on clicked item
     switch (clickedItem) {
       case 'Para correr':
-        targetRoute = '/run'; // Update with actual route
+        targetRoute = '/running-places'; // Update with actual route
         break;
       case 'Relajarme':
         targetRoute = '/relax'; // Update with actual route

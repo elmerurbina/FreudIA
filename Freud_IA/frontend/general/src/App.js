@@ -14,6 +14,7 @@ import GoalsManager from "./interfaces/GolasManager/GoalsManager";
 import PsychologistsDirective from "./interfaces/PsychologistsDirective/PsychologistsDirective";
 import AgenteFamilia from "./interfaces/AgentesIA/AgenteFamilia";
 import MeditationPlaces from "./interfaces/Places/MeditationPlaces";
+import RunningPlaces from "./interfaces/Places/RunningPlaces";
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/psicologos/directive" element={<PsychologistsDirective />} />
             <Route path="/agente-familia" element={<AgenteFamilia />} />
             <Route path="/meditation" element={<MeditationPlaces />} />
+            <Route path="/running-places" element={<RunningPlaces />} />
           </Routes>
         </main>
         <Footer />
