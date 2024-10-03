@@ -15,6 +15,7 @@ import PsychologistsDirective from "./interfaces/PsychologistsDirective/Psycholo
 import AgenteFamilia from "./interfaces/AgentesIA/AgenteFamilia";
 import MeditationPlaces from "./interfaces/Places/MeditationPlaces";
 import RunningPlaces from "./interfaces/Places/RunningPlaces";
+import RelaxingPlaces from "./interfaces/Places/RelaxingPlaces";
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/agente-familia" element={<AgenteFamilia />} />
             <Route path="/meditation" element={<MeditationPlaces />} />
             <Route path="/running-places" element={<RunningPlaces />} />
+            <Route path="/relaxing" element={<RelaxingPlaces />} />
           </Routes>
         </main>
         <Footer />

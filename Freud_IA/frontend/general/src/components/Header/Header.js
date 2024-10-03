@@ -59,7 +59,7 @@ const Header = () => {
         targetRoute = '/running-places'; // Update with actual route
         break;
       case 'Relajarme':
-        targetRoute = '/relax'; // Update with actual route
+        targetRoute = '/relaxing'; // Update with actual route
         break;
       case 'Meditar':
         targetRoute = '/meditation'; // Update with actual route
