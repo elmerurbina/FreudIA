@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import negativeThoughtIcon from '../../assets/images/negative_thought.png';
+import AgenteFamilia from "./AgenteFamilia"; // Ensure the correct path
 import './AgentesIA.css'; // Import your CSS file
 
 const AgentesIA = () => {
@@ -15,47 +16,43 @@ const AgentesIA = () => {
     { name: "Ayuda con Mis Planes", icon: "path/to/planes_icon.png" },
   ];
 
-  // State for displaying the template
-  const [showTemplate, setShowTemplate] = useState(false);
+  // State to track which agent is selected
+  const [selectedAgent, setSelectedAgent] = useState(null);
 
-  // Click event handler to toggle template visibility
-  const handleAgentesClick = () => {
-    setShowTemplate(prevShowTemplate => !prevShowTemplate);
+  // Click event handler to select an agent
+  const handleAgentClick = (agentName) => {
+    setSelectedAgent(agentName);
   };
 
   return (
     <div className="agentes-ia">
       <header>
         <ul>
-          <li onClick={handleAgentesClick} style={{ cursor: 'pointer' }}>
-            Agentes de IA
-          </li>
+          <li style={{ cursor: 'pointer' }}>Agentes de IA</li>
         </ul>
       </header>
 
-      {/* Conditional rendering for the template */}
-      {showTemplate && (
-        <div className="template">
-          <h2>Agentes de IA</h2>
+      {/* Render AgenteFamilia interface if "Familia" is selected */}
+      {selectedAgent === "Familia" ? (
+        <AgenteFamilia />  // This will render the AgenteFamilia interface when "Familia" is selected
+      ) : (
+        <main className="agents-container">
+          {/* Display agent cards if no agent is selected or if another agent is selected */}
           <div className="icons-container">
             {agents.map((agent, index) => (
-              <div key={index} className="agent-icon-container">
+              <div
+                key={index}
+                className="agent-card"
+                onClick={() => handleAgentClick(agent.name)} // Handle click event for each agent
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={agent.icon} alt={`${agent.name} Icon`} className="agent-icon" />
                 <p>{agent.name}</p>
               </div>
             ))}
           </div>
-        </div>
+        </main>
       )}
-
-      <main className="agents-container">
-        {agents.map((agent, index) => (
-          <div key={index} className="agent-card">
-            <img src={agent.icon} alt={`${agent.name} Icon`} className="agent-icon" />
-            <p>{agent.name}</p>
-          </div>
-        ))}
-      </main>
     </div>
   );
 };

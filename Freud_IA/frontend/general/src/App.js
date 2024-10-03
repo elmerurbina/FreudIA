@@ -12,6 +12,7 @@ import IdentificationPanel from "./interfaces/IdentificationPanel/Identification
 import Reportes from "./interfaces/Reportes/Reportes"; // Import the Reportes component
 import GoalsManager from "./interfaces/GolasManager/GoalsManager";
 import PsychologistsDirective from "./interfaces/PsychologistsDirective/PsychologistsDirective";
+import AgenteFamilia from "./interfaces/AgentesIA/AgenteFamilia";
 import './App.css'; // Optional: Global styles for the app
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/psicologos/reportes" element={<Reportes />} /> {/* New route for Reportes */}
             <Route path="/goals" element={<GoalsManager />} />
             <Route path="/psicologos/directive" element={<PsychologistsDirective />} />
+            <Route path="/agente-familia" element={<AgenteFamilia />} />
           </Routes>
         </main>
         <Footer />
