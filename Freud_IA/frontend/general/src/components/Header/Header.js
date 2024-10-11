@@ -48,6 +48,33 @@ const Header = () => {
     }
   };
 
+  // Function to handle navigation for Lugares items
+  const handleLugaresClick = (e) => {
+    const clickedItem = e.target.innerText; // Get the clicked item text
+    let targetRoute = '/'; // Default target route
+
+    // Determine target route based on clicked item
+    switch (clickedItem) {
+      case 'Para correr':
+        targetRoute = '/running-places'; // Update with actual route
+        break;
+      case 'Relajarme':
+        targetRoute = '/relaxing'; // Update with actual route
+        break;
+      case 'Meditar':
+        targetRoute = '/meditation'; // Update with actual route
+        break;
+      case 'Lugares turísticos cerca de mí':
+        targetRoute = '/touristic'; // Update with actual route
+        break;
+      default:
+        break;
+    }
+
+    // Navigate to the target route when an item is clicked
+    navigate(targetRoute);
+  };
+
   return (
     <header className="header">
       <div className="logo">
@@ -76,7 +103,7 @@ const Header = () => {
             <div className="dropdown">
               <ul>
                 <li>
-                  <Link to="/agentes-ia">Agentes de IA</Link> {/* Link to Agentes IA */}
+                  <Link to="/agentes-ia">Agentes de IA</Link>
                 </li>
                 <li onClick={handleUserClick}>Objetivos</li>
                 <li onClick={handleUserClick}>Expediente</li>
@@ -91,10 +118,10 @@ const Header = () => {
             Lugares
             <div className="dropdown">
               <ul>
-                <li>Para correr</li>
-                <li>Relajarme</li>
-                <li>Meditar</li>
-                <li>Lugares turísticos cerca de mí</li>
+                <li onClick={handleLugaresClick}>Para correr</li>
+                <li onClick={handleLugaresClick}>Relajarme</li>
+                <li onClick={handleLugaresClick}>Meditar</li>
+                <li onClick={handleLugaresClick}>Lugares turísticos cerca de mí</li>
               </ul>
             </div>
           </li>

@@ -1,0 +1,167 @@
+.agente-ia {
+  background: linear-gradient(135deg, rgba(0, 102, 204, 1), rgba(0, 51, 153, 1));
+  background-color: rgba(0, 51, 153, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+  position: fixed;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(204, 66, 225, 0.5);
+  width: 50%;
+  margin-left: 25%;
+  height: 380px;
+  margin-top: 180px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 30px;
+  color: white;
+  margin-right: 10px;
+}
+
+.username {
+  color: white;
+  font-size: 18px;
+}
+
+.profile-options,
+.agent-options {
+  position: absolute;
+  top: 43px;
+  right: 10px;
+  background-color: rgba(0, 51, 153, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.profile-option
+ {
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  font-family: 'Helvetica', sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.agent-option {
+  padding: 12px 50px;
+  margin-top: -11px;
+  font-size: 0.6rem;
+  font-family: 'Helvetica', sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-option:hover,
+.agent-option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-container {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-message {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  position: relative;
+  border-radius: 5px;
+  left: 25%;
+  right: 30%;
+  display: flex; /* Adding flex display */
+  align-items: center; /* Vertically center content */
+}
+
+.chat-messages {
+  flex-grow: 1;
+  margin-bottom: 3px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.user-message {
+  justify-content: flex-end;
+  margin-top: 40px;
+  background-color: rgba(204, 66, 225, 0.8);
+  font-family: 'Helvetica', sans-serif;
+ font-size: 0.9rem;
+  margin-left: 250px;
+}
+
+.bot-message {
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 265, 0.9);
+  font-size: 0.9rem;
+  font-family: 'Helvetica', sans-serif;
+  margin-right: 250px;
+}
+
+.message-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.input-container {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  left: 25%;
+  right: 25%;
+  background: linear-gradient(135deg, rgba(0, 102, 204, 1), rgba(0, 51, 153, 1));
+  margin-top: 330px; /* Push input to the bottom */
+  padding: 10px;
+
+  border-radius: 20px;
+}
+
+.chat-input {
+  flex-grow: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 17px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  resize: none; /* Prevent resizing */
+}
+
+.chat-input::placeholder {
+  color: white;
+}
+
+.chat-input:focus {
+  outline: none; /* Remove outline */
+}
+
+.icon-left,
+.icon-right {
+  font-size: 20px;
+  color: white;
+  margin: 0 5px;
+  cursor: pointer;
+}
