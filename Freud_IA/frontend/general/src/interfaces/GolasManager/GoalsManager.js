@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './GoalsManager.css'; // Import custom styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faList, faRobot } from '@fortawesome/free-solid-svg-icons';
+import {faPlus, faList, faRobot, faTimes} from '@fortawesome/free-solid-svg-icons';
+import AgenteObjetivos from '../AgentesIA/AgenteObjetivos'; // Import AgenteObjetivos component
 
 const GoalsManager = () => {
   const [showForm, setShowForm] = useState(false);
@@ -9,10 +10,11 @@ const GoalsManager = () => {
   const [category, setCategory] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
-  const [startDate, setStartDate] = useState(''); // New state for start date
-  const [endDate, setEndDate] = useState(''); // New state for end date
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [reminder, setReminder] = useState('');
-  const [description, setDescription] = useState(''); // New state for description
+  const [description, setDescription] = useState('');
+  const [showAgenteObjetivos, setShowAgenteObjetivos] = useState(false); // State to manage AgenteObjetivos visibility
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,24 +41,30 @@ const GoalsManager = () => {
     setShowForm(false); // Hide the form after submission
   };
 
+  const handleBotIconClick = () => {
+    setShowAgenteObjetivos((prev) => !prev); // Toggle AgenteObjetivos visibility when the icon is clicked
+  };
+
   return (
     <div className="goals-container">
       <h2>Gestionar Metas</h2>
 
       {/* Action Buttons */}
       <div className="actions">
-        <button className="access-goals">
-          <FontAwesomeIcon icon={faList} /> Acceder a mis metas
-        </button>
         <button className="create-goal" onClick={() => setShowForm(!showForm)}>
-          <FontAwesomeIcon icon={faPlus} /> Crear una nueva meta
+          <FontAwesomeIcon icon={faPlus}/> Crear una nueva meta
         </button>
+
+        <button className="access-goals">
+          <FontAwesomeIcon icon={faList}/> Acceder a mis metas
+        </button>
+
       </div>
 
       {/* Goal Creation Form - Hidden Initially */}
       {showForm && (
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
             <label htmlFor="goal">Nombre de la Meta:</label>
             <input
               type="text"
@@ -178,13 +186,30 @@ const GoalsManager = () => {
       )}
 
       {/* Help icon at the bottom right */}
-      <div className="help-icon">
+      <div className="help-icon" onClick={handleBotIconClick}>
         <span className="help-hover-text">
           Necesitas ayuda sobre cómo planear tus metas? <br />
           Comunícate con nuestro agente para recibir ayuda personalizada.
         </span>
         <FontAwesomeIcon icon={faRobot} className="bot-icon" />
       </div>
+
+      {/* Render AgenteObjetivos if the bot icon is clicked */}
+     {showAgenteObjetivos && (
+  <div className="agente-objetivos">
+    <span className="tooltip">
+      <button
+        className="close-button"
+        onClick={() => setShowAgenteObjetivos(false)}
+      >
+        <FontAwesomeIcon icon={faTimes} />
+      </button>
+      <span className="tooltiptext">Cerrar bot</span> {/* Tooltip text */}
+    </span>
+    <AgenteObjetivos />
+  </div>
+)}
+
     </div>
   );
 };
