@@ -4,7 +4,7 @@ import './AgentesStyles.css';
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AgenteFamilia = () => {
+const AgenteGeneral = () => {
   const [messages, setMessages] = useState([]); // Fixed the hook
   const [input, setInput] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -47,7 +47,7 @@ const AgenteFamilia = () => {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: 'Hi! Soy el agente especialista en problemas familiares.' }
+          { type: 'bot', text: 'Hi! Dime como puedo ayudarte!' }
         ]);
       }, 500);
     }
@@ -121,7 +121,7 @@ const AgenteFamilia = () => {
       <div className="chat-container">
         <div className="welcome-message bot-message">
           <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-          <span>Bienvenido/a, Soy el agente especialista en problemas familiares.</span>
+          <span>Bienvenido/a, Dime como puedo ayudarte!</span>
         </div>
 
         <div className="chat-messages">
@@ -137,7 +137,7 @@ const AgenteFamilia = () => {
         <div className="input-container">
           <FontAwesomeIcon icon={faImage} className="icon-left" title="Subir imagen" />
           <textarea
-            placeholder="Soy el agente especialista en problemas familiares, Dime como puedo ayudarte?"
+            placeholder="Dime como puedo ayudarte?"
             value={input}
             onChange={handleInputChange}
             maxLength={1500}
@@ -158,4 +158,4 @@ const AgenteFamilia = () => {
   );
 };
 
-export default AgenteFamilia;
+export default AgenteGeneral;
