@@ -1,0 +1,85 @@
+/* Container styling */
+.settings-container {
+  width: 400px;
+  margin-left: 25%;
+  padding: 200px;
+  background: linear-gradient(
+    150deg,
+    rgba(204, 66, 225, 1) 0%,
+    rgba(77, 34, 150, 1) 16%,
+    rgba(65, 32, 137, 1) 33%,
+    rgba(47, 23, 99, 1) 50%,
+    rgba(31, 13, 65, 1) 65%,
+    rgba(31, 12, 66, 1) 100%
+  );
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+  color: white;
+}
+
+select,
+input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.time-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.add-time-btn {
+  width: 100%;
+  padding: 10px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-primary {
+  width: 100%;
+  padding: 10px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.btn-primary:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+button[type="button"] {
+  padding: 5px 10px;
+  background: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background: #ff79b0;
+}
+
+.interval {
+  color: white;
+}

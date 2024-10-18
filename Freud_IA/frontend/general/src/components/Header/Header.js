@@ -33,7 +33,7 @@ const Header = () => {
         targetRoute = '/historial';
         break;
       case 'Notificaciones':
-        targetRoute = '/notificaciones';
+        targetRoute = '/notifications';
         break;
       case 'Cuenta':
         targetRoute = '/cuenta';

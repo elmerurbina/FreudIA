@@ -24,7 +24,8 @@ import AgenteDiario from "./interfaces/AgentesIA/AgenteDiario";
 import AgenteLove from "./interfaces/AgentesIA/AgenteLove";
 import AgenteNegativo from "./interfaces/AgentesIA/AgenteNegativo";
 import AgenteDesahogarme from "./interfaces/AgentesIA/AgenteDesahogarme";
-import AgenteMotivacion from "./interfaces/AgentesIA/AgenteMotivacion"; // Optional: Global styles for the app
+import AgenteMotivacion from "./interfaces/AgentesIA/AgenteMotivacion";
+import Notifications from "./interfaces/Notifications/Notifications";
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/agente-desahogarme" element={<AgenteDesahogarme />} />
             <Route path="/agente-motivacion" element={<AgenteMotivacion />} />
             <Route path="/agente-objetivos" element={<AgenteObjetivos />} />
+            <Route path="/notifications" element={<Notifications />} />
 
           </Routes>
         </main>
