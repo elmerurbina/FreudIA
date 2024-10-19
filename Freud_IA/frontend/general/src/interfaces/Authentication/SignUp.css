@@ -66,6 +66,7 @@
 .btn-secondary {
     background-color: #6c757d;
     color: white;
+    margin-top: 5px;
 }
 
 .btn-secondary:hover {
@@ -95,6 +96,121 @@
     font-size: 0.9rem;
 }
 
+/* Container for the plans */
+.plans {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* Style for each plan box */
+.plan {
+  background-color: #f5f5f5; /* Light background for contrast */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 60%;
+    margin-bottom: 50px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on plan boxes */
+.plan:hover {
+  transform: scale(1.05);
+}
+
+/* Plan headings (e.g., Basico, Premium, Pro) */
+.plan h2 {
+  color: #4CAF50; /* Primary green color */
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* List of features for each plan */
+.plan ul {
+  list-style: revert;
+  padding: 0px;
+  margin: 0;
+}
+
+.plan ul li {
+  font-size: 0.8rem;
+  color: #333; /* Dark text color */
+  margin: 10px 0;
+}
+
+/* Price and payment options */
+.plan p {
+  font-size: 0.8rem;
+  color: #000000; /* Slightly darker color for emphasis */
+  font-weight: bold;
+}
+
+/* Button styles */
+.plan .button {
+  background-color: #4CAF50; /* Primary green */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+/* Hover effect for buttons */
+.plan .button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Insurance link */
+.aseguradora a {
+  color: #000000; /* Blue color for the link */
+  text-decoration: none;
+  font-size: 0.9rem;
+    margin-bottom: 250px;
+  cursor: pointer;
+}
+
+#aseguradora-link {
+    color: #2980B9; /* Blue color for the link */
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Insurance input field */
+#codigo-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.invalid {
+  color: red;
+  font-size: 12px;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .plans {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .plan {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+
 /* Styles for soft link */
 .soft-link {
     display: block;
@@ -115,7 +231,7 @@
         max-width: 90%;
     }
 
-    .btn-primary, .btn-secondary {
-        padding: 12px;
-    }
+
+
+
 }

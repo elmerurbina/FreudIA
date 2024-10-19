@@ -28,9 +28,10 @@
 }
 
 .agent-icon {
-  width: 50px; /* Size of the icon */
-  height: 50px; /* Size of the icon */
-  margin-bottom: 10px;
+  width: 70px; /* Size of the icon */
+  height: 70px; /* Size of the icon */
+  margin-bottom: 5px;
+
 }
 
 /* New styles for the template section */
