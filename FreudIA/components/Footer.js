@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     marginLeft: 16,
-    marginVertical: 10,
+    marginVertical: 2,
     color: '#ffffff', // White color for the title
   },
   content: {

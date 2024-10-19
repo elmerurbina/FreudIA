@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Modal, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Modal, FlatList, ScrollView } from 'react-native';
 
 const Header = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -7,19 +7,26 @@ const Header = ({ navigation }) => {
 
   const dropdownData = {
     Psicologos: ['Contactar un Psicologo', 'Perfil', 'Reportes', 'Directiva'],
-    Usuarios: ['Agentes de IA', 'Objetivos', 'Expediente', 'Red de Apoyo', 'Historial', 'Notificaciones', 'Cuenta'],
+    Usuarios: [
+      { name: 'Agentes de IA', route: 'AgentesIA' },
+      { name: 'Objetivos', route: 'GoalsManager' },
+      { name: 'Expediente', route: 'Expediente' },
+      { name: 'Red de Apoyo', route: 'RedDeApoyo' },
+      { name: 'Historial', route: 'Historial' },
+      { name: 'Notificaciones', route: 'Notificaciones' },
+      { name: 'Cuenta', route: 'Cuenta' },
+    ],
     Lugares: ['Para correr', 'Relajarme', 'Meditar', 'Lugares turísticos cerca de mí'],
     Socios: ['Aseguradoras', 'Clinicas', 'Farmacias'],
   };
 
   const handleItemClick = (item) => {
-    if (item === 'Agentes de IA') {
-      navigation.navigate('AgentesIA'); // Adjust to your screen name
-    } else if (item === 'Objetivos') {
-      navigation.navigate('GoalsManager'); // Adjust to your screen name
+    if (typeof item === 'string') {
+      // Handle string items (e.g., Psicologos, Lugares, Socios)
+      console.log(item); // Replace with appropriate action if needed
     } else {
-      // Handle other items similarly
-      // For example, using navigation.navigate(item);
+      // Handle object items (e.g., Usuarios)
+      navigation.navigate(item.route);
     }
     setModalVisible(false); // Close dropdown modal
   };
@@ -48,15 +55,23 @@ const Header = ({ navigation }) => {
                 onRequestClose={() => setModalVisible(false)}
               >
                 <View style={styles.modalContainer}>
-                  <FlatList
-                    data={dropdownData[category]}
-                    keyExtractor={(item) => item}
-                    renderItem={({ item }) => (
-                      <TouchableOpacity onPress={() => handleItemClick(item)} style={styles.dropdownItem}>
-                        <Text style={styles.dropdownText}>{item}</Text>
-                      </TouchableOpacity>
-                    )}
-                  />
+                  <View style={styles.modalHeader}>
+                    <Text style={styles.modalTitle}>{category}</Text>
+                    <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
+                      <Text style={styles.closeButtonText}>X</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <ScrollView style={styles.dropdownContainer}>
+                    <FlatList
+                      data={dropdownData[category]}
+                      keyExtractor={(item) => (typeof item === 'string' ? item : item.name)}
+                      renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => handleItemClick(item)} style={styles.dropdownItem}>
+                          <Text style={styles.dropdownText}>{typeof item === 'string' ? item : item.name}</Text>
+                        </TouchableOpacity>
+                      )}
+                    />
+                  </ScrollView>
                 </View>
               </Modal>
             )}
@@ -69,7 +84,7 @@ const Header = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Note: gradients in React Native require libraries
+   backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Note: gradients in React Native require libraries
     color: 'white',
     padding: 20,
     alignItems: 'center',
@@ -115,12 +130,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  dropdownItem: {
-    backgroundColor: 'white',
-    padding: 5,
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: '80%',
-    marginVertical: 5,
-    borderRadius: 5,
+    padding: 10,
+    backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Gradient background
+    borderRadius: 8,
+  },
+  modalTitle: {
+    color: 'white',
+    fontSize: 18,
+  },
+  closeButton: {
+    padding: 5,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  dropdownContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    width: '80%',
+    borderRadius: 8,
+    maxHeight: '70%', // Allow scrolling
+  },
+  dropdownItem: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
   },
   dropdownText: {
     color: 'black',
