@@ -1,3 +1,4 @@
+/* Main Agent Container */
 .agente-ia {
   background: linear-gradient(135deg, rgba(0, 102, 204, 1), rgba(0, 51, 153, 1));
   background-color: rgba(0, 51, 153, 0.8);
@@ -5,23 +6,26 @@
   overflow: hidden;
   position: fixed;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(204, 66, 225, 0.5);
-  width: 50%;
-  margin-left: 25%;
-  height: 380px;
-  margin-top: 180px;
-  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  height: 60vh; /* Adjust if needed */
+  top: 37%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Profile Container */
 .user-profile-container {
   display: flex;
   align-items: center;
   padding: 10px;
   position: relative;
-
 }
 
+/* User Profile */
 .user-profile {
   display: flex;
   align-items: center;
@@ -39,6 +43,7 @@
   font-size: 18px;
 }
 
+/* Profile and Agent Options */
 .profile-options,
 .agent-options {
   position: absolute;
@@ -50,19 +55,10 @@
   z-index: 10;
 }
 
-.profile-option
- {
+.profile-option,
+.agent-option {
   padding: 10px 20px;
   font-size: 0.7rem;
-  font-family: 'Helvetica', sans-serif;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.agent-option {
-  padding: 12px 50px;
-  margin-top: -11px;
-  font-size: 0.6rem;
   font-family: 'Helvetica', sans-serif;
   color: white;
   cursor: pointer;
@@ -74,12 +70,15 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Chat Container */
 .chat-container {
   flex-grow: 1;
   padding: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px; /* Added margin to create separation */
+  height: calc(100% - 60px); /* Adjust the height as needed */
 }
 
 .welcome-message {
@@ -87,12 +86,13 @@
   padding: 15px;
   position: relative;
   border-radius: 5px;
-  left: 25%;
-  right: 30%;
-  display: flex; /* Adding flex display */
-  align-items: center; /* Vertically center content */
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
+/* Message Styles */
 .chat-messages {
   flex-grow: 1;
   margin-bottom: 3px;
@@ -106,20 +106,26 @@
 
 .user-message {
   justify-content: flex-end;
-  margin-top: 40px;
   background-color: rgba(204, 66, 225, 0.8);
   font-family: 'Helvetica', sans-serif;
- font-size: 0.9rem;
-  margin-left: 250px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  margin: 5px;
+  max-width: 75%;
 }
 
 .bot-message {
   justify-content: flex-start;
   background-color: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 265, 0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
   font-family: 'Helvetica', sans-serif;
-  margin-right: 250px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  max-width: 75%;
 }
 
 .message-icon {
@@ -127,16 +133,18 @@
   margin-right: 10px;
 }
 
+/* Input Container */
 .input-container {
   display: flex;
-  position: fixed;
   align-items: center;
-  left: 25%;
-  right: 25%;
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  max-width: 600px;
+  left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(135deg, rgba(0, 102, 204, 1), rgba(0, 51, 153, 1));
-  margin-top: 330px; /* Push input to the bottom */
   padding: 10px;
-
   border-radius: 20px;
 }
 
@@ -144,10 +152,10 @@
   flex-grow: 1;
   border: none;
   border-radius: 20px;
-  padding: 17px;
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
-  resize: none; /* Prevent resizing */
+  resize: none;
 }
 
 .chat-input::placeholder {
@@ -155,7 +163,7 @@
 }
 
 .chat-input:focus {
-  outline: none; /* Remove outline */
+  outline: none;
 }
 
 .icon-left,
@@ -164,4 +172,100 @@
   color: white;
   margin: 0 5px;
   cursor: pointer;
+}
+
+.message-icon {
+  width: 30px; /* Set the desired width for the image icon */
+  height: 30px; /* Set the desired height for the image icon */
+  border-radius: 50%; /* Makes the icon circular */
+  margin-right: 10px; /* Adds space between the icon and the text */
+  object-fit: cover; /* Ensures the image scales properly within the circular frame */
+}
+
+/* Styles for aligning user and bot messages */
+.user-message .message-icon {
+  float: right; /* Aligns the user message icon to the right */
+  margin-left: 10px; /* Adds space between the text and the icon */
+  margin-right: 0;
+}
+
+.bot-message .message-icon {
+  float: left; /* Aligns the bot message icon to the left */
+}
+
+.message-icon,
+.user-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-icon {
+  font-size: 14px; /* Adjust size to match image icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc; /* Background color for user icon */
+  color: #fff; /* Text color for user icon */
+}
+
+/* Responsive Styles */
+
+/* Small devices (320px and above) */
+@media (max-width: 480px) {
+  .agente-ia {
+    height: 70vh;
+  }
+
+  .user-message,
+  .bot-message {
+    font-size: 0.8rem;
+  }
+
+  .input-container {
+    padding: 8px;
+  }
+
+  .chat-input {
+    font-size: 0.8rem;
+  }
+}
+
+/* Medium devices (600px and above) */
+@media (min-width: 600px) {
+  .agente-ia {
+    width: 80%;
+    height: 65vh;
+  }
+
+  .input-container {
+    width: 80%;
+  }
+}
+
+/* Large devices (768px and above) */
+@media (min-width: 768px) {
+  .agente-ia {
+    width: 60%;
+    height: 60vh;
+  }
+
+  .input-container {
+    width: 60%;
+  }
+}
+
+/* Extra large devices (1200px and above) */
+@media (min-width: 1200px) {
+  .agente-ia {
+    width: 50%;
+    height: 50vh;
+  }
+
+  .input-container {
+    width: 50%;
+  }
 }

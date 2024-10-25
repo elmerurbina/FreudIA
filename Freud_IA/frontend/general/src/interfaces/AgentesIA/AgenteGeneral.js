@@ -199,39 +199,55 @@ const AgenteGeneral = () => {
       </div>
 
       <div className="chat-container">
+        {/* Welcome message */}
         <div className="welcome-message bot-message">
-          <img src="assets/images/general.png" alt="User Icon" className="message-icon"/>
+          <img
+              src={require('../../assets/images/general-agent.png')}
+              alt="Welcome Icon"
+              className="message-icon"
+          />
           <span>Bienvenido/a, Dime como puedo ayudarte!</span>
         </div>
 
+        {/* Chat messages */}
         <div className="chat-messages">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}>
-              <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-              <span>{message.text}</span>
-            </div>
+              <div
+                  key={index}
+                  className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}
+              >
+                {message.type === 'bot' ? (
+                    <img
+                        src={require('../../assets/images/general-agent.png')}
+                        alt="Bot Icon"
+                        className="message-icon"
+                    />
+                ) : (
+                    <i className="user-icon">👤</i>
+                  )}
+                <span>{message.text}</span>
+              </div>
           ))}
-          <div ref={chatEndRef} />
+          <div ref={chatEndRef}/>
         </div>
-
         <div className="input-container">
-          <FontAwesomeIcon icon={faImage} className="icon-left" title="Subir imagen" />
+          <FontAwesomeIcon icon={faImage} className="icon-left" title="Subir imagen"/>
           <textarea
-            placeholder="Dime como puedo ayudarte?"
-            value={input}
-            onChange={handleInputChange}
-            maxLength={1500}
-            className="chat-input"
-            rows={1}
+              placeholder="Dime como puedo ayudarte?"
+              value={input}
+              onChange={handleInputChange}
+              maxLength={1500}
+              className="chat-input"
+              rows={1}
           />
           <FontAwesomeIcon
-            icon={faPaperPlane}
-            className="icon-right"
-            title="Enviar Mensaje"
-            onClick={handleSendMessage}
+              icon={faPaperPlane}
+              className="icon-right"
+              title="Enviar Mensaje"
+              onClick={handleSendMessage}
           />
-          <FontAwesomeIcon icon={faMicrophone} className="icon-right" title="Enviar Audio" />
-          <FontAwesomeIcon icon={faPhone} className="icon-right" title="Llamar" />
+          <FontAwesomeIcon icon={faMicrophone} className="icon-right" title="Enviar Audio"/>
+          <FontAwesomeIcon icon={faPhone} className="icon-right" title="Llamar"/>
         </div>
       </div>
     </div>
