@@ -55,9 +55,17 @@
   z-index: 10;
 }
 
-.profile-option,
-.agent-option {
+.profile-option {
   padding: 10px 20px;
+  font-size: 0.7rem;
+  font-family: 'Helvetica', sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.agent-option {
+  padding: 1px 20px;
   font-size: 0.7rem;
   font-family: 'Helvetica', sans-serif;
   color: white;
