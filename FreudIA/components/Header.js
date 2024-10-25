@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Modal, FlatList, ScrollView } from 'react-native';
+import {useNavigation} from "expo-router";
 
-const Header = ({ navigation }) => {
+
+const Header = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState(null);
+  const navigation = useNavigation();
 
   const dropdownData = {
     Psicologos: ['Contactar un Psicologo', 'Perfil', 'Reportes', 'Directiva'],
@@ -55,12 +58,6 @@ const Header = ({ navigation }) => {
                 onRequestClose={() => setModalVisible(false)}
               >
                 <View style={styles.modalContainer}>
-                  <View style={styles.modalHeader}>
-                    <Text style={styles.modalTitle}>{category}</Text>
-                    <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
-                      <Text style={styles.closeButtonText}>X</Text>
-                    </TouchableOpacity>
-                  </View>
                   <ScrollView style={styles.dropdownContainer}>
                     <FlatList
                       data={dropdownData[category]}
@@ -84,7 +81,7 @@ const Header = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   header: {
-   backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Note: gradients in React Native require libraries
+    backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)',
     color: 'white',
     padding: 20,
     alignItems: 'center',
@@ -129,26 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '80%',
-    padding: 10,
-    backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Gradient background
-    borderRadius: 8,
-  },
-  modalTitle: {
-    color: 'white',
-    fontSize: 18,
-  },
-  closeButton: {
-    padding: 5,
-  },
-  closeButtonText: {
-    color: 'white',
-    fontSize: 18,
   },
   dropdownContainer: {
     backgroundColor: 'white',

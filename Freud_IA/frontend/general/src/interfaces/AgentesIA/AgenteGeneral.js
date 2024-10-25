@@ -51,6 +51,15 @@ const AgenteGeneral = () => {
         case 'que es la ansiedad?':
           botResponse = 'La ansiedad es una respuesta natural del cuerpo al estrés. Es normal sentir ansiedad en situaciones desafiantes.';
           break;
+           case 'hola':
+          botResponse = 'Hola mucho gusto!';
+          break;
+           case 'que es la ansiedad?':
+          botResponse = 'La ansiedad es una respuesta natural del cuerpo al estrés. Es normal sentir ansiedad en situaciones desafiantes.';
+          break;
+          case 'como estas?':
+          botResponse = 'Muy bien gracias! y tu que tal?';
+          break;
         case 'como puedo manejar el estres?':
           botResponse = 'Algunas técnicas incluyen la meditación, el ejercicio regular y hablar con alguien de confianza sobre tus preocupaciones.';
           break;
@@ -191,7 +200,7 @@ const AgenteGeneral = () => {
 
       <div className="chat-container">
         <div className="welcome-message bot-message">
-          <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
+          <img src="assets/images/general.png" alt="User Icon" className="message-icon"/>
           <span>Bienvenido/a, Dime como puedo ayudarte!</span>
         </div>
 

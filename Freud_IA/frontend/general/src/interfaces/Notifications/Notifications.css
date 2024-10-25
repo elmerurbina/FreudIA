@@ -14,13 +14,13 @@
   );
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: white;
+
 }
 
 label {
   display: block;
   margin: 15px 0 5px;
-  color: white;
+
 }
 
 select,

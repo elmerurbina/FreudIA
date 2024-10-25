@@ -99,7 +99,8 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
   footer: {
-    padding: 1,
+    padding: 3,
+    marginBottom: 0,
     backgroundColor: 'linear-gradient(150deg, rgba(80, 40, 175, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%)', // Note: gradients in React Native require libraries
   },
   footerNav: {
