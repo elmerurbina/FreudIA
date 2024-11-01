@@ -26,6 +26,7 @@ import AgenteNegativo from "./interfaces/AgentesIA/AgenteNegativo";
 import AgenteDesahogarme from "./interfaces/AgentesIA/AgenteDesahogarme";
 import AgenteMotivacion from "./interfaces/AgentesIA/AgenteMotivacion";
 import Notifications from "./interfaces/Notifications/Notifications";
+import GuiasPersonalizadas from "./interfaces/GuiasPersonalizadas/GuiasPersonalizadas";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<Dashboard />} /> {/* Home route */}
+            <Route path="/guias-personalizadas" element={<GuiasPersonalizadas />} />
             <Route path="/agentes-ia" element={<AgentesIA />} /> {/* Route for AgentesIA */}
             <Route path="/sign-in" element={<SignIn />} /> {/* Route for Sign In */}
             <Route path="/sign-up" element={<SignUp />} /> {/* Route for Sign Up */}

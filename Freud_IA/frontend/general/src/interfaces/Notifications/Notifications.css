@@ -3,14 +3,10 @@
   width: 400px;
   margin-left: 25%;
   padding: 200px;
-  background: linear-gradient(
-    150deg,
-    rgba(204, 66, 225, 1) 0%,
-    rgba(77, 34, 150, 1) 16%,
-    rgba(65, 32, 137, 1) 33%,
-    rgba(47, 23, 99, 1) 50%,
-    rgba(31, 13, 65, 1) 65%,
-    rgba(31, 12, 66, 1) 100%
+   background: linear-gradient(
+    to bottom,
+    rgba(220, 220, 220, 1),
+    rgba(220, 220, 220, 1)
   );
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
