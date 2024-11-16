@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation</title>
+  <style>
+    .header {
+      background: linear-gradient(150deg, rgba(204, 66, 225, 1) 0%, rgba(77, 34, 150, 1) 16%, rgba(65, 32, 137, 1) 33%, rgba(47, 23, 99, 1) 50%, rgba(31, 13, 65, 1) 65%, rgba(31, 12, 66, 1) 100%);
+      color: white;
+      font-family: 'Helvetica', sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 3rem;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .freud {
+      color: #ffffff;
+      margin-right: 0.2rem;
+    }
+
+    .ia {
+      color: #ee13c4;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar li {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      background: linear-gradient(to bottom, rgba(220, 220, 220, 1), rgba(220, 220, 220, 1));
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      display: none;
+    }
+
+    .navbar li:hover .dropdown {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: rgba(205, 66, 225, 1);
+    }
+
+    .dropdown ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dropdown ul li a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .dropdown ul li a:hover {
+      color: rgba(205, 66, 225, 1);
+    }
+
+    .dropdown ul li:hover {
+      background-color: rgba(205, 66, 225, 0.2);
+    }
+
+    .container {
+      margin-top: 100px; /* Space for fixed header */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .document-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .document-item {
+      background-color: rgba(204, 66, 225, 0.1);
+      border: 1px solid rgba(204, 66, 225, 0.3);
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .document-item:hover {
+      background-color: rgba(204, 66, 225, 0.3);
+    }
+
+    .document-item a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .document-item a:hover {
+      color: rgba(204, 66, 225, 1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header">
+    <div class="logo">
+      <span class="freud">FREUD</span><span class="ia">IA</span>
+    </div>
+    <div class="slogan">Documentation for the Project</div>
+    <div class="navbar">
+      <ul>
+        <li><a href="#english">English</a></li>
+        <li><a href="#spanish">Spanish</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="container">
+
+    <!-- English Documents -->
+    <div id="english" class="document-list">
+      <h2>English Documentation</h2>
+      <div class="document-item">
+        <a href="arquitecture.html">Architecture</a>
+      </div>
+      <div class="document-item">
+        <a href="English/project_management.html">Project Management</a>
+      </div>
+        <div class="document-item">
+            <a href="security.html">Security</a>
+        </div>
+      <div class="document-item">
+        <a href="English/project_overview.html">Project Overview</a>
+      </div>
+      <div class="document-item">
+        <a href="technical_documentation.html">Technical Documentation</a>
+      </div>
+    </div>
+
+    <!-- Spanish Documents -->
+    <div id="spanish" class="document-list">
+      <h2>Spanish Documentation</h2>
+      <div class="document-item">
+        <a href="Spanish/arquitectura.html">Arquitectura</a>
+      </div>
+      <div class="document-item">
+        <a href="Spanish/mantenimiento_del_proyecto.html">Mantenimiento del Proyecto</a>
+      </div>
+      <div class="document-item">
+        <a href="Spanish/seguridadrequirements.html">Requisitos de Seguridad</a>
+      </div>
+      <div class="document-item">
+        <a href="Spanish/manual_usuario.html">Manual Usuario</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
