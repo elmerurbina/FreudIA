@@ -19,7 +19,23 @@ h2 {
   margin-bottom: 20px;
 }
 
-.access-goals, .create-goal {
+.access-goals {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  right: 5px;
+  margin-left: 50%;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+
+  transition: background-color 0.3s;
+  margin-left: auto; /* Align to the right */
+}
+
+.create-goal {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
   border: none;
@@ -27,16 +43,20 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  left: 5px;
   display: flex;
-  align-items: center;
+
   transition: background-color 0.3s;
+  margin-right: auto; /* Align to the left */
 }
 
-.access-goals:hover, .create-goal:hover {
+.access-goals:hover,
+.create-goal:hover {
   background: linear-gradient(135deg, #89c4f4, #a4d4f4);
 }
 
-.access-goals i, .create-goal i {
+.access-goals i,
+.create-goal i {
   margin-right: 10px;
 }
 
@@ -51,9 +71,9 @@ label {
   margin-bottom: 8px;
 }
 
-input[type="text"],
+input[type='text'],
 select,
-input[type="time"] {
+input[type='time'] {
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -67,7 +87,7 @@ input[type="time"] {
   margin-bottom: 10px;
 }
 
-.radio-group input[type="radio"] {
+.radio-group input[type='radio'] {
   margin-right: 10px;
 }
 
@@ -95,7 +115,6 @@ input[type="time"] {
   margin-top: 50px; /* Adjust to space it from the buttons */
 }
 
-
 .bot-icon {
   font-size: 50px; /* Adjust icon size as needed */
   cursor: pointer;
@@ -110,7 +129,6 @@ input[type="time"] {
 .help-icon:hover .help-hover-text {
   display: block; /* Show hover text when hovering the icon */
 }
-
 
 .help-hover-text {
   display: none;
@@ -127,4 +145,58 @@ input[type="time"] {
 
 .help-icon:hover .help-hover-text {
   display: block;
+}
+
+.agente-objetivos {
+  position: absolute; /* Use absolute positioning */
+  top: -40px; /* 25px from the top */
+  padding: 3px;
+  margin-right: 72%;
+  right: 10px; /* Distance from the right */
+  width: 10px; /* Set a specific width */
+  display: block;
+  z-index: 5; /* Ensure it appears above other content */
+}
+
+.close-button {
+  background: none; /* Transparent background */
+  border: none; /* Remove border */
+  color: red; /* Change to match your theme */
+  font-size: 30px; /* Adjust size */
+  cursor: pointer; /* Pointer cursor on hover */
+  position: absolute; /* Absolute position */
+  top: 210px; /* Adjust position */
+/* Adjust position */
+  z-index: 1000; /* Higher z-index to ensure it is on top */
+}
+
+.close-button:hover {
+  color: #ff4d4d; /* Change color on hover for visual feedback */
+}
+
+.tooltip {
+  position: relative; /* Position relative for the tooltip */
+  display: inline-block; /* Inline block for the button */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden; /* Hide tooltip by default */
+  width: 100px; /* Width of the tooltip */
+  background-color: black; /* Tooltip background color */
+  color: white; /* Tooltip text color */
+  text-align: center; /* Center text */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Padding */
+  position: absolute; /* Position absolute */
+  z-index: 1000; /* Ensure it appears above other content */
+ margin-top: 190px;
+  left: 50%; /* Center horizontally */
+  margin-left: -50%; /* Offset to center */
+  opacity: 0; /* Make invisible */
+  transition: opacity 0.3s; /* Fade effect */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible; /* Show tooltip on hover */
+  opacity: 1; /* Fade in */
 }

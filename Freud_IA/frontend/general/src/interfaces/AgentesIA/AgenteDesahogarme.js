@@ -119,17 +119,34 @@ const AgenteDesahogarme = () => {
       </div>
 
       <div className="chat-container">
+        {/* Welcome message */}
         <div className="welcome-message bot-message">
-          <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-          <span>Bienvenido/a, Si lo que necesitas es desahogarte estoy aqui para escucharte y apoyarte!</span>
+          <img
+              src={require('../../assets/images/agente-desahogo.png')}
+              alt="Welcome Icon"
+              className="message-icon"
+          />
+          <span>Bienvenido/a, Dime como puedo ayudarte!</span>
         </div>
 
+        {/* Chat messages */}
         <div className="chat-messages">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}>
-              <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-              <span>{message.text}</span>
-            </div>
+              <div
+                  key={index}
+                  className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}
+              >
+                {message.type === 'bot' ? (
+                    <img
+                        src={require('../../assets/images/agente-desahogo.png')}
+                        alt="Bot Icon"
+                        className="message-icon"
+                    />
+                ) : (
+                    <i className="user-icon">👤</i>
+                  )}
+                <span>{message.text}</span>
+              </div>
           ))}
           <div ref={chatEndRef} />
         </div>

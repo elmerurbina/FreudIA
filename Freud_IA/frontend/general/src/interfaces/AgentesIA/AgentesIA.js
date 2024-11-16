@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import negativeThoughtIcon from '../../assets/images/negative_thought.png';
-import './AgentesIA.css'; // Import your CSS file
+import NegativeThoughtIcon from '../../assets/images/negative-thought-agent.png';
+import GeneralAgentIcon from '../../assets/images/general-agent.png'
+import LoveAgentIcon from '../../assets/images/love-agent.png'
+import FriendsAgentIcon from '../../assets/images/friends-agent.png'
+import FamilyAgentIcon from '../../assets/images/family-agent.png'
+import GoalsAgentIcon from '../../assets/images/goal-agent.png'
+import DiaryAgentIcon from '../../assets/images/diary-agent.png'
+import AgenteDesahogo from '../../assets/images/agente-desahogo.png'
+import MotivationAgentIcon from '../../assets/images/motivation-agent.png'
+import  PAP from '../../assets/images/PAP.png'
+
+import './AgentesIA.css';
+import agenteLove from "./AgenteLove"; // Import your CSS file
 
 const AgentesIA = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   const agents = [
-    { name: "General", path: "/agente-general", icon: "path/to/general_icon.png" },
-    { name: "Diario Personal", path: "/agente-diario", icon: "path/to/diario_personal_icon.png" },
-    { name: "Familia", path: "/agente-familia", icon: "path/to/familia_icon.png" },
-    { name: "Amigos", path: "/agente-amigos", icon: "path/to/amigos_icon.png" },
-    { name: "Yo en el Amor", path: "/agente-love", icon: "path/to/yo_en_el_amor_icon.png" },
-    { name: "Pensamiento Negativo", path: "/agente-negativo", icon: negativeThoughtIcon },
-    { name: "Solo Quiero Desahogarme", path: "/agente-desahogarme", icon: "path/to/desahogarme_icon.png" },
-    { name: "Necesito Motivacion", path: "/agente-motivacion", icon: "path/to/necesito_motivacion_icon.png" },
-    { name: "Ayuda con Mis Planes", path: "/agente-objetivos", icon: "path/to/planes_icon.png" },
+    { name: "General", path: "/agente-general", icon: GeneralAgentIcon },
+    { name: "Diario Personal", path: "/agente-diario", icon: DiaryAgentIcon },
+    { name: "Primeros Auxilios Psicologicos", path: "/pap", icon: PAP},
+    { name: "Familia", path: "/agente-familia", icon: FamilyAgentIcon },
+    { name: "Amigos", path: "/agente-amigos", icon: FriendsAgentIcon},
+    { name: "Yo en el Amor", path: "/agente-love", icon: LoveAgentIcon },
+    { name: "Pensamiento Negativo", path: "/agente-negativo", icon: NegativeThoughtIcon },
+    { name: "Solo Quiero Desahogarme", path: "/agente-desahogarme", icon: AgenteDesahogo },
+    { name: "Necesito Motivacion", path: "/agente-motivacion", icon: MotivationAgentIcon },
+    { name: "Ayuda con Mis Planes", path: "/agente-objetivos", icon: GoalsAgentIcon },
   ];
 
   // Click event handler to select an agent and navigate to the corresponding path

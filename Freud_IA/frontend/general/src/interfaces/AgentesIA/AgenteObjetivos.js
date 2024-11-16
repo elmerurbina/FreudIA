@@ -44,10 +44,11 @@ const AgenteObjetivos = () => {
       setShowProfileOptions(false);
       setInput('');
 
+      // Example response from the bot
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: 'Hi! Necesitas organizar tus planes? O alcanzar tus metas?' }
+          { type: 'bot', text: 'Hi! Necesitas organizar tus planes? O alcanzar tus metas? Puedes manejar tus objetivos aquí.' }
         ]);
       }, 500);
     }
@@ -77,6 +78,16 @@ const AgenteObjetivos = () => {
       default:
         console.log(`${option} clicked`);
     }
+  };
+
+  // New function to handle managing objectives
+  const handleManageObjectives = () => {
+    navigate('/manage-objectives'); // Navigate to the goal manager page
+    // Load initial messages if needed
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { type: 'bot', text: 'Bienvenido/a a la gestión de objetivos. ¿Cómo puedo ayudarte hoy?' }
+    ]);
   };
 
   useEffect(() => {
@@ -114,22 +125,40 @@ const AgenteObjetivos = () => {
                 {agent.name}
               </p>
             ))}
+            <p className="agent-option" onClick={handleManageObjectives}>Manejar Objetivos</p> {/* New option */}
           </div>
         )}
       </div>
 
-      <div className="chat-container">
+        <div className="chat-container">
+        {/* Welcome message */}
         <div className="welcome-message bot-message">
-          <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-          <span>Bienvenido/a, Necesitas organizar tus planes? O alcanzar tus metas? Sere tu brazo derecho en el camino a tus logros</span>
+          <img
+              src={require('../../assets/images/goal-agent.png')}
+              alt="Welcome Icon"
+              className="message-icon"
+          />
+          <span>Bienvenido/a, Dime como puedo ayudarte!</span>
         </div>
 
+        {/* Chat messages */}
         <div className="chat-messages">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}>
-              <FontAwesomeIcon icon={faUserCircle} className="message-icon" />
-              <span>{message.text}</span>
-            </div>
+              <div
+                  key={index}
+                  className={`message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}
+              >
+                {message.type === 'bot' ? (
+                    <img
+                        src={require('../../assets/images/goal-agent.png')}
+                        alt="Bot Icon"
+                        className="message-icon"
+                    />
+                ) : (
+                    <i className="user-icon">👤</i>
+                  )}
+                <span>{message.text}</span>
+              </div>
           ))}
           <div ref={chatEndRef} />
         </div>

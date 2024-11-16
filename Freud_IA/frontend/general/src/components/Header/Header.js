@@ -1,24 +1,19 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
-  // Function to handle navigation for Psicologos and Socios items
   const handleIdentificationClick = (e) => {
-    const clickedItem = e.target.innerText; // Get the clicked item text
-
-    // Redirect to the IdentificationPanel and pass the clicked item
+    const clickedItem = e.target.innerText;
     navigate('/identification', { state: { clickedItem } });
   };
 
-  // Function to handle navigation to sign-in for dropdown items, passing the target route
   const handleUserClick = (e) => {
     const clickedItem = e.target.innerText;
     let targetRoute = '/';
 
-    // Determine target route based on clicked item
     switch (clickedItem) {
       case 'Objetivos':
         targetRoute = '/goals';
@@ -32,8 +27,11 @@ const Header = () => {
       case 'Historial':
         targetRoute = '/historial';
         break;
+      case 'Guias Personalizadas':
+        targetRoute = '/guias-personalizadas';
+        break;
       case 'Notificaciones':
-        targetRoute = '/notificaciones';
+        targetRoute = '/notifications';
         break;
       case 'Cuenta':
         targetRoute = '/cuenta';
@@ -43,35 +41,31 @@ const Header = () => {
     }
 
     if (clickedItem !== 'Agentes de IA') {
-      // Redirect to the sign-in page, passing the intended target route
       navigate('/sign-in', { state: { from: targetRoute } });
     }
   };
 
-  // Function to handle navigation for Lugares items
   const handleLugaresClick = (e) => {
-    const clickedItem = e.target.innerText; // Get the clicked item text
-    let targetRoute = '/'; // Default target route
+    const clickedItem = e.target.innerText;
+    let targetRoute = '/';
 
-    // Determine target route based on clicked item
     switch (clickedItem) {
       case 'Para correr':
-        targetRoute = '/running-places'; // Update with actual route
+        targetRoute = '/running-places';
         break;
       case 'Relajarme':
-        targetRoute = '/relaxing'; // Update with actual route
+        targetRoute = '/relaxing';
         break;
       case 'Meditar':
-        targetRoute = '/meditation'; // Update with actual route
+        targetRoute = '/meditation';
         break;
       case 'Lugares turísticos cerca de mí':
-        targetRoute = '/touristic'; // Update with actual route
+        targetRoute = '/touristic';
         break;
       default:
         break;
     }
 
-    // Navigate to the target route when an item is clicked
     navigate(targetRoute);
   };
 
@@ -88,50 +82,45 @@ const Header = () => {
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            Psicologos
+            Administradores
             <div className="dropdown">
               <ul>
-                <li onClick={handleIdentificationClick}>Contactar un Psicologo</li>
-                <li onClick={handleIdentificationClick}>Perfil</li>
+                <li onClick={handleIdentificationClick}>Asociados</li>
+                <li onClick={handleUserClick}>Perfil Psicologo</li>
                 <li onClick={handleIdentificationClick}>Reportes</li>
                 <li onClick={handleIdentificationClick}>Directiva</li>
               </ul>
             </div>
           </li>
           <li>
-            Usuarios
-            <div className="dropdown">
+          Usuarios
+            <div className="dropdown scrollable-dropdown">
               <ul>
                 <li>
                   <Link to="/agentes-ia">Agentes de IA</Link>
                 </li>
+                <li onClick={handleUserClick}>Psicologos en Linea</li>
+                <li onClick={handleUserClick}>Guias Personalizadas</li>
+                <li onClick={handleUserClick}>Comprar Medicina</li>
                 <li onClick={handleUserClick}>Objetivos</li>
                 <li onClick={handleUserClick}>Expediente</li>
                 <li onClick={handleUserClick}>Red de Apoyo</li>
                 <li onClick={handleUserClick}>Historial</li>
                 <li onClick={handleUserClick}>Notificaciones</li>
                 <li onClick={handleUserClick}>Cuenta</li>
+
+
               </ul>
             </div>
           </li>
           <li>
-            Lugares
+          Lugares
             <div className="dropdown">
               <ul>
                 <li onClick={handleLugaresClick}>Para correr</li>
                 <li onClick={handleLugaresClick}>Relajarme</li>
                 <li onClick={handleLugaresClick}>Meditar</li>
                 <li onClick={handleLugaresClick}>Lugares turísticos cerca de mí</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            Socios
-            <div className="dropdown">
-              <ul>
-                <li onClick={handleIdentificationClick}>Aseguradoras</li>
-                <li onClick={handleIdentificationClick}>Clinicas</li>
-                <li onClick={handleIdentificationClick}>Farmacias</li>
               </ul>
             </div>
           </li>

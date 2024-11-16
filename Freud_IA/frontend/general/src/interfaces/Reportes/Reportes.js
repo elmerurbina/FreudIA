@@ -25,21 +25,22 @@ const Reportes = () => {
         </div>
 
         <div className="template-link">
-          <p>
-            <a
-              href="/path/to/template.docx" // Update with the actual link to the template file
-              target="_blank"
-              rel="noopener noreferrer"
-              className="template-download-link"
-            >
-              Utiliza esta plantilla para redactar tu reporte
-            </a>
-          </p>
+            <p>
+                <a
+                    href="https://docs.google.com/document/d/1cIU9YTMWnO7zOSfqWhg0p82ay8P1nmt2/export?format=docx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="template-download-link"
+                >
+                    Utiliza esta plantilla para redactar tu reporte
+                </a>
+
+            </p>
         </div>
 
-        <div className="button">
-          <button type="submit" className="button">Subir</button>
-        </div>
+          <div className="button">
+              <button type="submit" className="button">Subir</button>
+          </div>
       </form>
     </div>
   );
