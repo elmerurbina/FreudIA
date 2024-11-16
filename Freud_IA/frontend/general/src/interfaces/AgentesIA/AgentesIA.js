@@ -9,6 +9,8 @@ import GoalsAgentIcon from '../../assets/images/goal-agent.png'
 import DiaryAgentIcon from '../../assets/images/diary-agent.png'
 import AgenteDesahogo from '../../assets/images/agente-desahogo.png'
 import MotivationAgentIcon from '../../assets/images/motivation-agent.png'
+import  PAP from '../../assets/images/PAP.png'
+
 import './AgentesIA.css';
 import agenteLove from "./AgenteLove"; // Import your CSS file
 
@@ -18,6 +20,7 @@ const AgentesIA = () => {
   const agents = [
     { name: "General", path: "/agente-general", icon: GeneralAgentIcon },
     { name: "Diario Personal", path: "/agente-diario", icon: DiaryAgentIcon },
+    { name: "Primeros Auxilios Psicologicos", path: "/pap", icon: PAP},
     { name: "Familia", path: "/agente-familia", icon: FamilyAgentIcon },
     { name: "Amigos", path: "/agente-amigos", icon: FriendsAgentIcon},
     { name: "Yo en el Amor", path: "/agente-love", icon: LoveAgentIcon },
