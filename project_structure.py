@@ -2,8 +2,8 @@ import os
 
 # Define the main project and app names
 project_name = "Freud_IA"
-django_apps = ["ai_agents", "general", "users", "psychologists", "places", "patients_management", "goals"]
-react_apps = ["ai_agents", "general", "users", "psychologists", "places", "patients_management", "goals"]
+django_apps = ["sistema_ML", "general", "users", "psychologists", "places", "patients_management", "goals"]
+react_apps = ["sistema_ML", "general", "users", "psychologists", "places", "patients_management", "goals"]
 
 # Create the main project directory
 os.makedirs(project_name, exist_ok=True)
