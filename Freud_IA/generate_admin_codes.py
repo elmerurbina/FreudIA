@@ -12,17 +12,17 @@ def generate_admin_codes(num_codes, code_length=12):
         list: A list of unique admin access codes.
     """
     codes = set()
-    year = "2024"
-    month = "11"
+    acryn = "fdia"
+
 
     # Calculate the number of random characters needed
-    random_length = code_length - len(year) - len(month)
+    random_length = code_length - len(acryn)
 
     while len(codes) < num_codes:
         # Generate random characters
         random_part = ''.join(random.choices(string.ascii_letters + string.digits, k=random_length))
         # Create the final code
-        code = f"{random_part}{year}{month}"
+        code = f"{acryn}{random_part}"
         codes.add(code)
 
     return list(codes)
