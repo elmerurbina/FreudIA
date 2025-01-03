@@ -55,17 +55,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'freudia.wsgi.application'
+WSGI_APPLICATION = 'FreudIA.backend.goals.config.wsgi.application'
 
 # Database configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'freudia_db',  # Replace with your database name
-        'USER': 'your-db-user',
-        'PASSWORD': 'your-db-password',
-        'HOST': 'localhost',  # Or use the Docker container IP for PostgreSQL
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DB', 'fdia_goals'),
+        'USER': os.getenv('POSTGRES_USER', 'fdiaelmer'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'fdiahnGf6Xj0'),
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
 

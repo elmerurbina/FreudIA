@@ -62,7 +62,7 @@ TEMPLATES = [
 ]
 
 # WSGI application
-WSGI_APPLICATION = 'migrations.wsgi.application'
+WSGI_APPLICATION = 'FreudIA.backend.authentication.config.wsgi.application'
 
 # Database configuration (PostgreSQL)
 DATABASES = {
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ni'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
