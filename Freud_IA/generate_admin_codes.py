@@ -1,6 +1,7 @@
 import random
 import string
 
+
 def generate_admin_codes(num_codes, code_length=12):
     """Generate a list of random admin access codes including year and month.
 
@@ -14,18 +15,20 @@ def generate_admin_codes(num_codes, code_length=12):
     codes = set()
     acryn = "fdia"
 
-
     # Calculate the number of random characters needed
     random_length = code_length - len(acryn)
 
     while len(codes) < num_codes:
         # Generate random characters
-        random_part = ''.join(random.choices(string.ascii_letters + string.digits, k=random_length))
+        random_part = ''.join(
+            random.choices(string.ascii_letters + string.digits, k=random_length)
+        )
         # Create the final code
         code = f"{acryn}{random_part}"
         codes.add(code)
 
     return list(codes)
+
 
 def main():
     # Configuration for code generation
@@ -39,6 +42,6 @@ def main():
     for code in admin_codes:
         print(code)
 
+
 if __name__ == "__main__":
     main()
-

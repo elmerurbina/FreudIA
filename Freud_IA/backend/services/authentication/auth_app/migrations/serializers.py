@@ -10,8 +10,16 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'perfil_foto', 'estado_psicologico',
-                  'date_joined']
+        fields = [
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'perfil_foto',
+            'estado_psicologico',
+            'date_joined',
+        ]
         read_only_fields = ['id', 'date_joined']
 
     def validate_email(self, value):
@@ -27,7 +35,9 @@ class UserSerializer(serializers.ModelSerializer):
         Validate the profile photo (if provided).
         """
         if value and not value.name.endswith(('.jpg', '.jpeg', '.png')):
-            raise serializers.ValidationError("La foto de perfil debe ser en formato JPG o PNG.")
+            raise serializers.ValidationError(
+                "La foto de perfil debe ser en formato JPG o PNG."
+            )
         return value
 
 
@@ -47,7 +57,9 @@ class PaymentSerializer(serializers.ModelSerializer):
         Validate that the card number follows a proper format.
         """
         if len(str(value)) != 16:
-            raise serializers.ValidationError("El número de tarjeta debe tener 16 dígitos.")
+            raise serializers.ValidationError(
+                "El número de tarjeta debe tener 16 dígitos."
+            )
         return value
 
     def validate_cvv(self, value):
@@ -63,8 +75,11 @@ class PaymentSerializer(serializers.ModelSerializer):
         Validate that the expiration date is in the correct format and hasn't passed.
         """
         from datetime import datetime
+
         if not value or len(value) != 5 or value[2] != '/':
-            raise serializers.ValidationError("La fecha de expiración debe estar en formato MM/AA.")
+            raise serializers.ValidationError(
+                "La fecha de expiración debe estar en formato MM/AA."
+            )
 
         month, year = value.split('/')
         if int(month) < 1 or int(month) > 12:
@@ -83,6 +98,7 @@ class PaymentDetailsSerializer(serializers.ModelSerializer):
     """
     A special serializer for displaying payment details.
     """
+
     user = UserSerializer(read_only=True)
 
     class Meta:
