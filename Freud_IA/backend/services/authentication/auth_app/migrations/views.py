@@ -1,22 +1,22 @@
-# views.py
 from rest_framework import viewsets, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from rest_framework import permissions
 from .models import User, Payment
 from .serializers import UserSerializer, PaymentSerializer
 from django.db import transaction
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]  # Ensure that only authenticated users can access
-
+    permission_classes = [permissions.IsAuthenticated]
     def perform_create(self, serializer):
         """
         Override the create method to ensure that a user is created correctly.
         """
-        # Custom logic if needed, for example, assigning default roles or states
+
         serializer.save()
 
     @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
@@ -153,3 +153,48 @@ class UserPaymentViewSet(viewsets.ViewSet):
             return Response({
                 "detail": "Error al crear usuario o detalles de pago."
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['POST'])
+def login(request):
+    """
+    Login view to authenticate user with password or biometric data.
+    Assumes a front-end that handles biometrics (e.g., fingerprint or face recognition).
+    """
+    username = request.data.get('username')
+    password = request.data.get('password')
+
+    if username and password:
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # User authenticated successfully
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+    # Handling biometrics is client-side and would typically pass an auth token or biometric data
+    # that should be validated against a secure API or system
+
+    if 'biometric_token' in request.data:
+        biometric_token = request.data['biometric_token']
+
+        # Example: Validate the token with a biometric service
+        # For simplicity, this assumes a successful biometric authentication
+        try:
+            user = User.objects.get(username=username)  # Or fetch based on biometric token
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({"detail": "User not found or invalid biometric data."},
+                            status=status.HTTP_401_UNAUTHORIZED)
+
+    return Response({"detail": "Provide credentials or biometric data."}, status=status.HTTP_400_BAD_REQUEST)
