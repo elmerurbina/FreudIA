@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # For building REST APIs
     'rest_framework_simplejwt',  # For JWT-based authentication
-    'auth_app',  # Your authentication app
+    'auth_app',
+    'goals_app',
 ]
 
 # Middleware
