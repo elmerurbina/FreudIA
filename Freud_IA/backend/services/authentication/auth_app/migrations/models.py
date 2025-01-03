@@ -1,6 +1,11 @@
 from django.db import models, connection
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.utils.translation import gettext_lazy as _
+
 
 # Custom User Manager
 class CustomUserManager(BaseUserManager):
@@ -24,11 +29,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('Correo Electrónico'), unique=True)
     nombres = models.CharField(_('Nombres'), max_length=100)
     apellidos = models.CharField(_('Apellidos'), max_length=100)
-    perfil_foto = models.ImageField(_('Foto de Perfil'), upload_to='profiles/', null=True, blank=True)
+    perfil_foto = models.ImageField(
+        _('Foto de Perfil'), upload_to='profiles/', null=True, blank=True
+    )
     fecha_nacimiento = models.DateField(_('Fecha de Nacimiento'))
     pais = models.CharField(_('País'), max_length=50)
     departamento = models.CharField(_('Departamento'), max_length=50)
-    estado_psicologico = models.CharField(_('Estado Psicológico'), max_length=100, blank=True)
+    estado_psicologico = models.CharField(
+        _('Estado Psicológico'), max_length=100, blank=True
+    )
     codigo_unico = models.CharField(_('Código Único'), max_length=20, blank=True)
 
     is_active = models.BooleanField(_('Activo'), default=True)
@@ -37,14 +46,30 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nombres', 'apellidos', 'fecha_nacimiento', 'pais', 'departamento']
+    REQUIRED_FIELDS = [
+        'nombres',
+        'apellidos',
+        'fecha_nacimiento',
+        'pais',
+        'departamento',
+    ]
 
     def __str__(self):
         return f"{self.nombres} {self.apellidos} ({self.email})"
 
     # CRUD Operations for User
     @staticmethod
-    def create_user(email, nombres, apellidos, fecha_nacimiento, pais, departamento, password, perfil_foto=None, estado_psicologico=None):
+    def create_user(
+        email,
+        nombres,
+        apellidos,
+        fecha_nacimiento,
+        pais,
+        departamento,
+        password,
+        perfil_foto=None,
+        estado_psicologico=None,
+    ):
         """
         Create a new user.
         """
@@ -57,7 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             departamento=departamento,
             password=password,
             perfil_foto=perfil_foto,
-            estado_psicologico=estado_psicologico
+            estado_psicologico=estado_psicologico,
         )
         return user
 
@@ -73,20 +98,38 @@ class User(AbstractBaseUser, PermissionsMixin):
             return None
 
     @staticmethod
-    def update_user(user_id, email=None, nombres=None, apellidos=None, fecha_nacimiento=None, pais=None, departamento=None, perfil_foto=None, estado_psicologico=None):
+    def update_user(
+        user_id,
+        email=None,
+        nombres=None,
+        apellidos=None,
+        fecha_nacimiento=None,
+        pais=None,
+        departamento=None,
+        perfil_foto=None,
+        estado_psicologico=None,
+    ):
         """
         Update user details.
         """
         user = User.get_user_by_id(user_id)
         if user:
-            if email: user.email = email
-            if nombres: user.nombres = nombres
-            if apellidos: user.apellidos = apellidos
-            if fecha_nacimiento: user.fecha_nacimiento = fecha_nacimiento
-            if pais: user.pais = pais
-            if departamento: user.departamento = departamento
-            if perfil_foto: user.perfil_foto = perfil_foto
-            if estado_psicologico: user.estado_psicologico = estado_psicologico
+            if email:
+                user.email = email
+            if nombres:
+                user.nombres = nombres
+            if apellidos:
+                user.apellidos = apellidos
+            if fecha_nacimiento:
+                user.fecha_nacimiento = fecha_nacimiento
+            if pais:
+                user.pais = pais
+            if departamento:
+                user.departamento = departamento
+            if perfil_foto:
+                user.perfil_foto = perfil_foto
+            if estado_psicologico:
+                user.estado_psicologico = estado_psicologico
             user.save()
             return user
         return None
@@ -109,7 +152,9 @@ class Payment(models.Model):
     card_number = models.CharField(_('Número de Tarjeta'), max_length=16)
     expiration_date = models.CharField(_('Fecha de Expiración (MM/YY)'), max_length=5)
     cvv = models.CharField(_('CVV'), max_length=4)
-    plan = models.CharField(_('Plan'), max_length=20, choices=[('basic', 'Básico'), ('premium', 'Premium')])
+    plan = models.CharField(
+        _('Plan'), max_length=20, choices=[('basic', 'Básico'), ('premium', 'Premium')]
+    )
 
     def __str__(self):
         return f"Pago de {self.user.email} - {self.plan}"
@@ -125,7 +170,7 @@ class Payment(models.Model):
             card_number=card_number,
             expiration_date=expiration_date,
             cvv=cvv,
-            plan=plan
+            plan=plan,
         )
         return payment
 

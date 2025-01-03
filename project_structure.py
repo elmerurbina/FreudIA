@@ -2,8 +2,24 @@ import os
 
 # Define the main project and app names
 project_name = "Freud_IA"
-django_apps = ["sistema_ML", "general", "users", "psychologists", "places", "patients_management", "goals"]
-react_apps = ["sistema_ML", "general", "users", "psychologists", "places", "patients_management", "goals"]
+django_apps = [
+    "sistema_ML",
+    "general",
+    "users",
+    "psychologists",
+    "places",
+    "patients_management",
+    "goals",
+]
+react_apps = [
+    "sistema_ML",
+    "general",
+    "users",
+    "psychologists",
+    "places",
+    "patients_management",
+    "goals",
+]
 
 # Create the main project directory
 os.makedirs(project_name, exist_ok=True)
@@ -21,7 +37,9 @@ for app in django_apps:
     with open(os.path.join(app_path, "admin.py"), "w") as f:
         pass
     with open(os.path.join(app_path, "apps.py"), "w") as f:
-        f.write(f"from django.apps import AppConfig\n\nclass {app.capitalize()}Config(AppConfig):\n    name = '{app}'\n")
+        f.write(
+            f"from django.apps import AppConfig\n\nclass {app.capitalize()}Config(AppConfig):\n    name = '{app}'\n"
+        )
     with open(os.path.join(app_path, "models.py"), "w") as f:
         pass
     with open(os.path.join(app_path, "tests.py"), "w") as f:
@@ -36,13 +54,19 @@ with open(os.path.join(django_dir, "manage.py"), "w") as f:
     f.write("import sys\n")
     f.write("\n")
     f.write("if __name__ == '__main__':\n")
-    f.write(f"    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{project_name}.settings')\n")
+    f.write(
+        f"    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{project_name}.settings')\n"
+    )
     f.write("    try:\n")
     f.write("        from django.core.management import execute_from_command_line\n")
     f.write("    except ImportError as exc:\n")
     f.write("        raise ImportError(\n")
-    f.write("            \"Couldn't import Django. Are you sure it's installed and \"\n")
-    f.write("            \"available on your PYTHONPATH environment variable? Did you \"\n")
+    f.write(
+        "            \"Couldn't import Django. Are you sure it's installed and \"\n"
+    )
+    f.write(
+        "            \"available on your PYTHONPATH environment variable? Did you \"\n"
+    )
     f.write("            \"forget to activate a virtual environment?\"\n")
     f.write("        ) from exc\n")
     f.write("    execute_from_command_line(sys.argv)\n")
@@ -99,7 +123,11 @@ with open(os.path.join(project_dir, "settings.py"), "w") as f:
     f.write("        },\n")
     f.write("    },\n")
     f.write("]\n")
-    f.write("WSGI_APPLICATION = '{}.wsgi.application'.format('Freud_IA')\n".format(project_name))
+    f.write(
+        "WSGI_APPLICATION = '{}.wsgi.application'.format('Freud_IA')\n".format(
+            project_name
+        )
+    )
     f.write("DATABASES = {\n")
     f.write("    'default': {\n")
     f.write("        'ENGINE': 'django.db.backends.sqlite3',\n")
@@ -137,9 +165,17 @@ for app in react_apps:
         f.write('{\n  "name": "' + app + '",\n  "version": "1.0.0"\n}')
     os.makedirs(os.path.join(app_path, "src"), exist_ok=True)
     with open(os.path.join(app_path, "src", "index.js"), "w") as f:
-        f.write('import React from "react";\nimport ReactDOM from "react-dom";\n\nReactDOM.render(\n  <h1>Hello, ' + app + '!</h1>,\n  document.getElementById("root")\n);\n')
+        f.write(
+            'import React from "react";\nimport ReactDOM from "react-dom";\n\nReactDOM.render(\n  <h1>Hello, '
+            + app
+            + '!</h1>,\n  document.getElementById("root")\n);\n'
+        )
     os.makedirs(os.path.join(app_path, "public"), exist_ok=True)
     with open(os.path.join(app_path, "public", "index.html"), "w") as f:
-        f.write('<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>' + app + '</title>\n</head>\n<body>\n  <div id="root"></div>\n</body>\n</html>\n')
+        f.write(
+            '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>'
+            + app
+            + '</title>\n</head>\n<body>\n  <div id="root"></div>\n</body>\n</html>\n'
+        )
 
 print("Project structure created successfully!")
