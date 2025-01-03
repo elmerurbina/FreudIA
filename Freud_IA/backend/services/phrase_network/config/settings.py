@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FreudIA.backend.phrase&network.config.wsgi.application'
+WSGI_APPLICATION = 'FreudIA.backend.phrase_network.config.wsgi.application'
 
 # Database configuration for PostgreSQL
 DATABASES = {
