@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # For JWT-based authentication
     'auth_app',
     'goals_app',
+    'pn_app',
 ]
 
 # Middleware
@@ -61,7 +62,7 @@ TEMPLATES = [
 ]
 
 # WSGI application
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'migrations.wsgi.application'
 
 # Database configuration (PostgreSQL)
 DATABASES = {

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'goals_app',
     'auth_app',
+    'pn_app',
 ]
 
 MIDDLEWARE = [
