@@ -42,41 +42,65 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f"{self.nombres} {self.apellidos} ({self.email})"
 
+    # CRUD Operations for User
     @staticmethod
     def create_user(email, nombres, apellidos, fecha_nacimiento, pais, departamento, password, perfil_foto=None, estado_psicologico=None):
         """
-        Create a new user using the stored procedure.
+        Create a new user.
         """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.create_user', [
-                email, nombres, apellidos, fecha_nacimiento, pais, departamento, password, perfil_foto, estado_psicologico
-            ])
+        user = User.objects.create(
+            email=email,
+            nombres=nombres,
+            apellidos=apellidos,
+            fecha_nacimiento=fecha_nacimiento,
+            pais=pais,
+            departamento=departamento,
+            password=password,
+            perfil_foto=perfil_foto,
+            estado_psicologico=estado_psicologico
+        )
+        return user
 
     @staticmethod
     def get_user_by_id(user_id):
         """
-        Retrieve user details using the stored procedure.
+        Retrieve user by ID.
         """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.get_user_by_id', [user_id])
-            user = cursor.fetchone()
-        return user
+        try:
+            user = User.objects.get(id=user_id)
+            return user
+        except User.DoesNotExist:
+            return None
+
+    @staticmethod
+    def update_user(user_id, email=None, nombres=None, apellidos=None, fecha_nacimiento=None, pais=None, departamento=None, perfil_foto=None, estado_psicologico=None):
+        """
+        Update user details.
+        """
+        user = User.get_user_by_id(user_id)
+        if user:
+            if email: user.email = email
+            if nombres: user.nombres = nombres
+            if apellidos: user.apellidos = apellidos
+            if fecha_nacimiento: user.fecha_nacimiento = fecha_nacimiento
+            if pais: user.pais = pais
+            if departamento: user.departamento = departamento
+            if perfil_foto: user.perfil_foto = perfil_foto
+            if estado_psicologico: user.estado_psicologico = estado_psicologico
+            user.save()
+            return user
+        return None
 
     @staticmethod
     def delete_user(user_id):
         """
-        Delete a user using the stored procedure.
+        Delete a user by ID.
         """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.delete_user', [user_id])
-
-    @staticmethod
-    def generate_user_profile(user_id, perfil_foto, estado_psicologico):
-        """
-        Generate a user profile using the stored procedure.
-        """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.generate_user_profile', [user_id, perfil_foto, estado_psicologico])
+        user = User.get_user_by_id(user_id)
+        if user:
+            user.delete()
+            return True
+        return False
 
 
 # Payment Model
@@ -90,20 +114,54 @@ class Payment(models.Model):
     def __str__(self):
         return f"Pago de {self.user.email} - {self.plan}"
 
+    # CRUD Operations for Payment
+    @staticmethod
+    def create_payment(user, card_number, expiration_date, cvv, plan):
+        """
+        Create new payment details for a user.
+        """
+        payment = Payment.objects.create(
+            user=user,
+            card_number=card_number,
+            expiration_date=expiration_date,
+            cvv=cvv,
+            plan=plan
+        )
+        return payment
+
+    @staticmethod
+    def get_payment_by_user(user_id):
+        """
+        Retrieve payment details by user ID.
+        """
+        try:
+            payment = Payment.objects.get(user_id=user_id)
+            return payment
+        except Payment.DoesNotExist:
+            return None
+
     @staticmethod
     def update_payment(user_id, card_number, expiration_date, cvv, plan):
         """
-        Update payment details using the stored procedure.
+        Update payment details for a user.
         """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.update_payment', [
-                user_id, card_number, expiration_date, cvv, plan
-            ])
+        payment = Payment.get_payment_by_user(user_id)
+        if payment:
+            payment.card_number = card_number
+            payment.expiration_date = expiration_date
+            payment.cvv = cvv
+            payment.plan = plan
+            payment.save()
+            return payment
+        return None
 
     @staticmethod
     def delete_payment(user_id):
         """
-        Delete payment details using the stored procedure.
+        Delete payment details for a user.
         """
-        with connection.cursor() as cursor:
-            cursor.callproc('user_auth.delete_payment', [user_id])
+        payment = Payment.get_payment_by_user(user_id)
+        if payment:
+            payment.delete()
+            return True
+        return False
