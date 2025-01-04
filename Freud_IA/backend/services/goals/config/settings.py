@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'goals_app',
     'auth_app',
     'pn_app',
+    'dmins_app',
 ]
 
 MIDDLEWARE = [
