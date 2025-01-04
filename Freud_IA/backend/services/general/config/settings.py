@@ -1,5 +1,3 @@
-# settings.py
-
 import os
 from pathlib import Path
 
@@ -7,11 +5,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'BJu0zMAPBBai74QM43K07NOmDOkUTxYNI2YSVDivdGBAoaJ3fSSrwaxlUFD6b2QmCcM'
+SECRET_KEY = 'your-secret-key-here'
+
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'your-production-domain.com',
+]  # Add your allowed hosts here
 
 # Application definition
 INSTALLED_APPS = [
@@ -21,12 +24,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'goals_app',
+    'rest_framework',  # Django Rest Framework for API
+    'admins_app',
     'auth_app',
-    'general_app',
+    'goals_app',
     'pn_app',
-    'dmins_app',
+    'general_app',
 ]
 
 MIDDLEWARE = [
@@ -36,7 +39,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XContentOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -57,17 +60,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FreudIA.backend.goals.config.wsgi.application'
+WSGI_APPLICATION = 'FreudIA.wsgi.application'
 
-# Database configuration
+# Database configuration for PostgreSQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'fdia_goals'),
-        'USER': os.getenv('POSTGRES_USER', 'fdiaelmer'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'fdiahnGf6Xj0'),
-        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        'NAME': os.getenv('DB_NAME', 'fdia_general'),
+        'USER': os.getenv('DB_USER', 'fdiaelmer'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'fdiahnGf6Xj0'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -88,43 +91,58 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = 'es'  # Spanish language for your project
+LANGUAGE_CODE = 'es-es'  # Set to Spanish
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Managua'  # Set to your local timezone
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Media files (user uploaded content)
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# REST Framework settings (for the API)
+# Default auto field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuration for Django REST Framework (DRF)
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
     ],
 }
 
-# CORS settings (for Cross-Origin Resource Sharing)
-CORS_ALLOW_ALL_ORIGINS = (
-    True  # Allow all domains for API calls, set it to False in production
+# Custom settings for your app (e.g., file paths, environment-specific variables)
+FILE_PATH = os.path.join(BASE_DIR, 'general', 'data', 'places_dataset.csv')
+
+# Middleware for user authentication (optional)
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
 )
 
-# Session settings for microservices (cookie configuration)
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# Email settings for development (optional)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # In development, outputs to the console
 
-# Custom user model if you are using one for authentication
-# AUTH_USER_MODEL = 'authentication.CustomUser'
+# Caching (optional, can be configured later based on needs)
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
 # Logging configuration (optional)
 LOGGING = {
@@ -143,10 +161,4 @@ LOGGING = {
             'propagate': True,
         },
     },
-}
-
-# Custom configurations specific to your Goals app (if any)
-GOALS_CONFIG = {
-    'goal_categories': ['Salud', 'Trabajo', 'Personal'],
-    'reminder_times': ['morning', 'afternoon'],
 }

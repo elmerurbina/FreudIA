@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NegativeThoughtIcon from '../../assets/images/negative-thought-agent.png';
-import GeneralAgentIcon from '../../assets/images/general-agent.png'
-import LoveAgentIcon from '../../assets/images/love-agent.png'
-import FriendsAgentIcon from '../../assets/images/friends-agent.png'
-import FamilyAgentIcon from '../../assets/images/family-agent.png'
-import GoalsAgentIcon from '../../assets/images/goal-agent.png'
-import DiaryAgentIcon from '../../assets/images/diary-agent.png'
-import AgenteDesahogo from '../../assets/images/agente-desahogo.png'
-import MotivationAgentIcon from '../../assets/images/motivation-agent.png'
-import  PAP from '../../assets/images/PAP.png'
+import NegativeThoughtIcon from '../../assets/images/negativity-agent.jpeg';
+import GeneralAgentIcon from '../../assets/images/general-agent.jpeg'
+import LoveAgentIcon from '../../assets/images/love-agent.jpeg'
+import FriendsAgentIcon from '../../assets/images/friends-agent.jpeg'
+import FamilyAgentIcon from '../../assets/images/family-agent.jpeg'
+import GoalsAgentIcon from '../../assets/images/goals-agent.jpeg'
+import DiaryAgentIcon from '../../assets/images/diary-agent.jpeg'
+import AgenteDesahogo from '../../assets/images/desahogo-agent.jpeg'
+import MotivationAgentIcon from '../../assets/images/motivation-agent.jpeg'
+import  PAP from '../../assets/images/PAP.jpeg'
 
 import './AgentesIA.css';
 import agenteLove from "./AgenteLove"; // Import your CSS file

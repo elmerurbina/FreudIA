@@ -1,16 +1,13 @@
-# settings.py
-
 import os
+import secrets
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base directory path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = 'BJu0zMAPBBai74QM43K07NOmDOkUTxYNI2YSVDivdGBAoaJ3fSSrwaxlUFD6b2QmCcM'
-
-DEBUG = True
-
+# Security settings
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', default=secrets.token_urlsafe(50))
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -22,25 +19,33 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'goals_app',
+    'corsheaders',
+    'admins_app',
     'auth_app',
-    'general_app',
+    'goals_app',
     'pn_app',
-    'dmins_app',
+    'general_app',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XContentOptionsMiddleware',
 ]
 
+# CORS settings (for microservices interaction)
+CORS_ALLOW_ALL_ORIGINS = True  # Change based on your needs (allow specific domains)
+
+# Root URL configuration
 ROOT_URLCONF = 'config.urls'
 
+# Templates settings
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -57,17 +62,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FreudIA.backend.goals.config.wsgi.application'
+# WSGI application
+WSGI_APPLICATION = 'admins.config.wsgi.application'
 
-# Database configuration
+# Database settings (PostgreSQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'fdia_goals'),
-        'USER': os.getenv('POSTGRES_USER', 'fdiaelmer'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'fdiahnGf6Xj0'),
-        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        'NAME': os.getenv('DB_NAME', 'fdia_admins_psychologists'),
+        'USER': os.getenv('DB_USER', 'fdiaelmer'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'fdiahnGf6Xj0'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -87,25 +93,51 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-LANGUAGE_CODE = 'es'  # Spanish language for your project
-
+# Localization settings
+LANGUAGE_CODE = 'es-ni'
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Media files (user uploaded content)
+# Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# REST Framework settings (for the API)
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'your_email@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'your_email_password')
+
+# Django Rest Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -115,38 +147,5 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS settings (for Cross-Origin Resource Sharing)
-CORS_ALLOW_ALL_ORIGINS = (
-    True  # Allow all domains for API calls, set it to False in production
-)
-
-# Session settings for microservices (cookie configuration)
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
-# Custom user model if you are using one for authentication
-# AUTH_USER_MODEL = 'authentication.CustomUser'
-
-# Logging configuration (optional)
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
-# Custom configurations specific to your Goals app (if any)
-GOALS_CONFIG = {
-    'goal_categories': ['Salud', 'Trabajo', 'Personal'],
-    'reminder_times': ['morning', 'afternoon'],
-}
+# Admin configurations
+ADMIN_SITE_HEADER = "Freud IA Admin"

@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # For JWT-based authentication
     'auth_app',
     'goals_app',
+    'general_app',
+    'pn_app',
+    'admins_app',
 ]
 
 # Middleware
@@ -61,7 +64,7 @@ TEMPLATES = [
 ]
 
 # WSGI application
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'FreudIA.backend.authentication.config.wsgi.application'
 
 # Database configuration (PostgreSQL)
 DATABASES = {
@@ -109,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ni'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
