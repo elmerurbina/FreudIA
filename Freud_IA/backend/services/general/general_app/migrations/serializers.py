@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import RelaxingPlace
+from .models import RecommendedPlace
 
-class RelaxingPlaceSerializer(serializers.ModelSerializer):
+class RecommendedPlaceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RelaxingPlace
-        fields = '__all__'
+        model = RecommendedPlace
+        fields = ['id', 'name', 'description', 'pais', 'departamento', 'category', 'image_url']
