@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
@@ -12,12 +14,20 @@
     "react-native-safe-area-context": "^4.11.1",
     "react-native-screens": "^3.34.0",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^5.0.1",
     "simple-peer": "^9.11.1"
   },
   "scripts": {
     "start:general": "cd C:\\Users\\elmer\\PycharmProjects\\Freud_IA\\frontend\\general && npm start",
     "start:users": "cd users && npm start",
     "start:appN": "cd psychologists && npm start"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "postcss-loader": "^8.1.1",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^4.0.0"
   }
 }
