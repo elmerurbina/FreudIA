@@ -6,7 +6,10 @@ from django.db import connection
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets
-from Freud_IA.backend.services.admins.admins_app.migrations.serializers import PsychologistSerializer, DirectiveSerializer
+from Freud_IA.backend.services.admins.admins_app.migrations.serializers import (
+    PsychologistSerializer,
+    DirectiveSerializer,
+)
 
 
 # Safe function to interact with the database and prevent SQL injections
@@ -58,7 +61,7 @@ class PsychologistViewSet(viewsets.ModelViewSet):
             'license': psychologist.license,
             'studies': psychologist.studies,
             'experience': psychologist.experience,
-            'keywords': psychologist.keywords
+            'keywords': psychologist.keywords,
         }
         return Response(profile_data)
 
@@ -80,7 +83,9 @@ class PsychologistViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def update_experience(self, request, pk=None):
         psychologist = self.get_object()
-        psychologist.experience = request.data.get('experience', psychologist.experience)
+        psychologist.experience = request.data.get(
+            'experience', psychologist.experience
+        )
         psychologist.save()
         return Response({'status': 'Experience Updated'})
 

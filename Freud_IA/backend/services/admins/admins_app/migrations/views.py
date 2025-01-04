@@ -49,7 +49,9 @@ class PsychologistViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def update_experience(self, request, pk=None):
         psychologist = self.get_object()
-        psychologist.experience = request.data.get('experience', psychologist.experience)
+        psychologist.experience = request.data.get(
+            'experience', psychologist.experience
+        )
         psychologist.save()
         return Response({'status': 'Experience Updated'})
 
@@ -59,6 +61,7 @@ class PsychologistViewSet(viewsets.ModelViewSet):
         psychologist = self.get_object()
         psychologist.delete()
         return Response({'status': 'Psychologist Deleted'})
+
 
 # Directive ViewSet
 class DirectiveViewSet(viewsets.ModelViewSet):
@@ -88,4 +91,3 @@ class DirectiveViewSet(viewsets.ModelViewSet):
         params = request.data.get('params', [])
         result = execute_safe_sql(query, params)
         return Response({'data': result})
-

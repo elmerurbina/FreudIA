@@ -22,7 +22,9 @@ class RecommendedPlaceViewSet(viewsets.ModelViewSet):
         user_departamento = request.user.profile.departamento
 
         # Filter places based on the user's pais and departamento
-        recommended_places = RecommendedPlace.objects.filter(pais=user_pais, departamento=user_departamento)
+        recommended_places = RecommendedPlace.objects.filter(
+            pais=user_pais, departamento=user_departamento
+        )
 
         # Serialize the filtered places
         serializer = self.get_serializer(recommended_places, many=True)
@@ -31,7 +33,9 @@ class RecommendedPlaceViewSet(viewsets.ModelViewSet):
     # Custom action to refresh the recommended places from CSV (for admin or manual trigger)
     @action(detail=False, methods=['post'])
     def refresh_places(self, request):
-        file_path = os.path.join(settings.BASE_DIR, 'general', 'data', 'places_dataset.csv')
+        file_path = os.path.join(
+            settings.BASE_DIR, 'general', 'data', 'places_dataset.csv'
+        )
 
         # Ensure CSV file exists
         if not os.path.exists(file_path):
@@ -49,7 +53,7 @@ class RecommendedPlaceViewSet(viewsets.ModelViewSet):
                         'description': row['description'],
                         'category': row['category'],
                         'image_url': row.get('image_url', ''),
-                    }
+                    },
                 )
 
         return Response({'status': 'Places refreshed successfully'})

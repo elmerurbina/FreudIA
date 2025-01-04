@@ -6,6 +6,7 @@ from .models import SupportContact, NotificationSetting
 from .serializers import SupportContactSerializer, NotificationSettingSerializer
 from django.contrib.auth.models import User
 
+
 class SupportContactViewSet(viewsets.ModelViewSet):
     queryset = SupportContact.objects.all()
     serializer_class = SupportContactSerializer
@@ -46,6 +47,7 @@ class SupportContactViewSet(viewsets.ModelViewSet):
         contact.delete()
         return Response({'message': 'SupportContact deleted successfully'})
 
+
 class NotificationSettingViewSet(viewsets.ModelViewSet):
     queryset = NotificationSetting.objects.all()
     serializer_class = NotificationSettingSerializer
@@ -64,7 +66,9 @@ class NotificationSettingViewSet(viewsets.ModelViewSet):
     def update_setting(self, request, pk=None):
         """Update an existing NotificationSetting"""
         setting = self.get_object()
-        serializer = NotificationSettingSerializer(setting, data=request.data, partial=True)
+        serializer = NotificationSettingSerializer(
+            setting, data=request.data, partial=True
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

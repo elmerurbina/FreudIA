@@ -10,7 +10,11 @@ SECRET_KEY = 'your-secret-key-here'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-production-domain.com']  # Add your allowed hosts here
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'your-production-domain.com',
+]  # Add your allowed hosts here
 
 # Application definition
 INSTALLED_APPS = [

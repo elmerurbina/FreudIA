@@ -36,6 +36,7 @@ class RecommendedPlace(models.Model):
         )
         return result
 
+
 # Signal to load places dynamically from a CSV file when a new User is created
 @receiver(post_save, sender=User)
 def load_recommended_places(sender, instance, created, **kwargs):
@@ -45,14 +46,16 @@ def load_recommended_places(sender, instance, created, **kwargs):
         user_departamento = instance.profile.departamento
 
         # Use the stored procedure to load places based on user's location
-        places = RecommendedPlace.load_places_from_procedure(user_pais, user_departamento)
+        places = RecommendedPlace.load_places_from_procedure(
+            user_pais, user_departamento
+        )
         for place in places:
             RecommendedPlace.objects.create(
-                name=place[0],          # assuming the name is in the first column
-                description=place[1],   # description in the second column
+                name=place[0],  # assuming the name is in the first column
+                description=place[1],  # description in the second column
                 pais=user_pais,
                 departamento=user_departamento,
-                category=place[2],      # category in the third column
+                category=place[2],  # category in the third column
                 image_url=place[3] if len(place) > 3 else '',  # optional image_url
             )
 
@@ -64,16 +67,21 @@ def load_places_from_csv(sender, instance, created, **kwargs):
         user_pais = instance.profile.pais
         user_departamento = instance.profile.departamento
 
-        file_path = os.path.join(settings.BASE_DIR, 'general', 'data', 'places_dataset.csv')
+        file_path = os.path.join(
+            settings.BASE_DIR, 'general', 'data', 'places_dataset.csv'
+        )
         with open(file_path, mode='r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                if row['pais'] == user_pais and row['departamento'] == user_departamento:
+                if (
+                    row['pais'] == user_pais
+                    and row['departamento'] == user_departamento
+                ):
                     RecommendedPlace.objects.create(
                         name=row['name'],
                         description=row['description'],
                         pais=row['pais'],
                         departamento=row['departamento'],
                         category=row['category'],
-                        image_url=row.get('image_url', '')
+                        image_url=row.get('image_url', ''),
                     )

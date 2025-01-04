@@ -2,9 +2,12 @@ from rest_framework import serializers
 from .models import Psychologist, Directive
 from django.contrib.auth.models import User
 
+
 # Serializer for Psychologist model
 class PsychologistSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Link to the User model
+    user = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all()
+    )  # Link to the User model
     first_name = serializers.CharField(max_length=255)
     last_name = serializers.CharField(max_length=255)
     license = serializers.CharField(max_length=255)
@@ -14,12 +17,23 @@ class PsychologistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Psychologist
-        fields = ['id', 'user', 'first_name', 'last_name', 'license', 'studies', 'experience', 'keywords']
+        fields = [
+            'id',
+            'user',
+            'first_name',
+            'last_name',
+            'license',
+            'studies',
+            'experience',
+            'keywords',
+        ]
 
     # Custom validation for the license field to ensure uniqueness
     def validate_license(self, value):
         if Psychologist.objects.filter(license=value).exists():
-            raise serializers.ValidationError("This license number is already registered.")
+            raise serializers.ValidationError(
+                "This license number is already registered."
+            )
         return value
 
     def create(self, validated_data):

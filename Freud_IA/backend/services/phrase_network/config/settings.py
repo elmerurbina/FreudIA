@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'general_app',
     'admins_app',
     'rest_framework',
-    'corsheaders',      # For handling cross-origin requests if needed
+    'corsheaders',  # For handling cross-origin requests if needed
 ]
 
 MIDDLEWARE = [
