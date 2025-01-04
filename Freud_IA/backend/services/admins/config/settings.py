@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'admins.config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'fdia_admin'),
+        'NAME': os.getenv('DB_NAME', 'fdia_admins'),
         'USER': os.getenv('DB_USER', 'fdiaelmer'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'fdiahnGf6Xj0'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
