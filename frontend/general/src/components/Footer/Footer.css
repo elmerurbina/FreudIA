@@ -27,6 +27,14 @@
   transition: color 0.3s ease;
   cursor: pointer; /* Change cursor to hand */
 }
+a {
+   font-size: 1rem;
+  color: #ffdf6c; /* Different color for the clickable titles */
+  transition: color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 
 /* White text for the rest of the content */
 .footer-nav .content {
@@ -84,7 +92,8 @@ p {
 
 /* Hover effect for icons */
 .icon:hover {
-  color: yellow; /* Change this to the desired hover color */
+  color: rgba(205, 66, 225, 1); /* Light hover effect */
+  transition: background-color 0.3s;
 }
 
 /* Tooltip style */
