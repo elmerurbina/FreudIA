@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'pn_app',
     'goals_app',
     'auth_app',
+    'general_app',
     'admins_app',
     'rest_framework',
     'corsheaders',      # For handling cross-origin requests if needed

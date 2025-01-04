@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'auth_app',
     'goals_app',
     'pn_app',
+    'general_app',
     'django_extensions',
 ]
 

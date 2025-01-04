@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # For JWT-based authentication
     'auth_app',
     'goals_app',
+    'general_app',
     'pn_app',
     'admins_app',
 ]
