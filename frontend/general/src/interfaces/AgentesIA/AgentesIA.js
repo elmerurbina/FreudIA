@@ -79,7 +79,7 @@ const AgentesIA = () => {
       icon: RobertAgentIcon,
       summary: "Experto en finanzas y desarrollo personal. Brinda apoyo para resolver problemas financieros y alcanzar metas a corto y largo plazo."
     },
-       {
+    {
       name: "Srita. Lisa",
       path: "/lisa-agent",
       icon: LisaAgentIcon,
@@ -104,6 +104,13 @@ const AgentesIA = () => {
           <li style={{ cursor: 'pointer' }}>Agentes de IA</li>
         </ul>
       </header>
+
+      {/* Floating Button */}
+      <a href="https://elmerurbina.github.io/FreudIA/agentes-ia" target="_blank" rel="noopener noreferrer">
+        <button className="floating-button">
+          Conocer Agentes IA: sus funciones, características y como utilizarlos
+        </button>
+      </a>
 
       <main className="agents-container">
         <div className="icons-container">

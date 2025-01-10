@@ -17,6 +17,27 @@
   margin-top: 100px;
 }
 
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.floating-button:hover {
+  background: linear-gradient(135deg, #89c4f4, #a4d4f4);
+}
+
+
 .agent-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
