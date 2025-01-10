@@ -106,7 +106,7 @@ const AgentesIA = () => {
       </header>
 
       {/* Floating Button */}
-      <a href="https://elmerurbina.github.io/FreudIA/agentes-ia" target="_blank" rel="noopener noreferrer">
+      <a href="https://elmerurbina.github.io/FreudIA/agentes_ia" target="_blank" rel="noopener noreferrer">
         <button className="floating-button">
           Conocer Agentes IA: sus funciones, características y como utilizarlos
         </button>
