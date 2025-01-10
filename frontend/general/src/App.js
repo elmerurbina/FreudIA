@@ -24,7 +24,10 @@ import AmandaAgent from "./interfaces/AgentesIA/AmandaAgent";
 import NicoleAgent from "./interfaces/AgentesIA/NicoleAgent";
 import EmmaAgent from "./interfaces/AgentesIA/EmmaAgent";
 import LauraAgent from "./interfaces/AgentesIA/LauraAgent";
+import LisaAgent from "./interfaces/AgentesIA/LisaAgent";
+import MarinaAgent from "./interfaces/AgentesIA/MarinaAgent";
 import JessicaAgent from "./interfaces/AgentesIA/JessicaAgent";
+import SarahAgent from "./interfaces/AgentesIA/SarahAgent";
 import Notifications from "./interfaces/Notifications/Notifications";
 import GuiasPersonalizadas from "./interfaces/GuiasPersonalizadas/GuiasPersonalizadas";
 
@@ -57,6 +60,9 @@ const App = () => {
             <Route path="/emma-agent" element={<EmmaAgent />} />
             <Route path="/laura-agent" element={<LauraAgent />} />
             <Route path="/jessica-agent" element={<JessicaAgent />} />
+            <Route path="/lisa-agent" element={<LisaAgent />} />
+            <Route path="/marina-agent" element={<MarinaAgent />} />
+            <Route path="/sarah-agent" element={<SarahAgent />} />
             <Route path="/robert-agent" element={<RobertAgent />} />
             <Route path="/notifications" element={<Notifications />} />
 

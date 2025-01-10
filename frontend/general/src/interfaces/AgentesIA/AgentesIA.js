@@ -33,7 +33,7 @@ const AgentesIA = () => {
     },
     {
       name: "Dra. Sarah",
-      path: "/pap",
+      path: "/sarah-agent",
       icon: SarahAgentIcon,
       summary: "Especialista en Primeros Auxilios Psicológicos. Brinda orientación en situaciones de crisis emocional."
     },
@@ -87,7 +87,7 @@ const AgentesIA = () => {
     },
     {
       name: "Marina",
-      path: "/agente-amigos",
+      path: "/marina-agent",
       icon: MarinaAgentIcon,
       summary: "Asistente de la red de apoyo para situaciones de riesgo de suicidio. Brinda ayuda tanto a personas con pensamientos suicidas como a sus familiares."
     },
