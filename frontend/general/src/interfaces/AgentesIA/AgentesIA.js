@@ -1,38 +1,100 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NegativeThoughtIcon from '../../assets/images/negativity-agent.jpeg';
-import GeneralAgentIcon from '../../assets/images/general-agent.jpeg'
-import LoveAgentIcon from '../../assets/images/love-agent.jpeg'
-import FriendsAgentIcon from '../../assets/images/friends-agent.jpeg'
-import FamilyAgentIcon from '../../assets/images/family-agent.jpeg'
-import GoalsAgentIcon from '../../assets/images/goals-agent.jpeg'
-import DiaryAgentIcon from '../../assets/images/diary-agent.jpeg'
-import AgenteDesahogo from '../../assets/images/desahogo-agent.jpeg'
-import MotivationAgentIcon from '../../assets/images/motivation-agent.jpeg'
-import  PAP from '../../assets/images/PAP.jpeg'
+import EmmaAgentIcon from '../../assets/images/Emma.jpeg';
+import JohnAgentIcon from '../../assets/images/John-Agent.jpeg';
+import NicoleAgentIcon from '../../assets/images/Nicole.jpeg';
+import DavidAgentIcon from '../../assets/images/David.jpeg';
+import MarkAgentIcon from '../../assets/images/Mark.jpeg';
+import RobertAgentIcon from '../../assets/images/Robert-agent.jpeg';
+import AmandaAgentIcon from '../../assets/images/Amanda.jpeg';
+import LauraAgentIcon from '../../assets/images/Laura.jpeg';
+import JessicaAgentIcon from '../../assets/images/Jessica.jpeg';
+import SarahAgentIcon from '../../assets/images/Sarah.jpeg';
+import LisaAgentIcon from '../../assets/images/Lisa.jpeg';
+import MarinaAgentIcon from '../../assets/images/Marina.jpeg';
 
 import './AgentesIA.css';
-import agenteLove from "./AgenteLove"; // Import your CSS file
 
 const AgentesIA = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const agents = [
-    { name: "General", path: "/agente-general", icon: GeneralAgentIcon },
-    { name: "Diario Personal", path: "/agente-diario", icon: DiaryAgentIcon },
-    { name: "Primeros Auxilios Psicologicos", path: "/pap", icon: PAP},
-    { name: "Familia", path: "/agente-familia", icon: FamilyAgentIcon },
-    { name: "Amigos", path: "/agente-amigos", icon: FriendsAgentIcon},
-    { name: "Yo en el Amor", path: "/agente-love", icon: LoveAgentIcon },
-    { name: "Pensamiento Negativo", path: "/agente-negativo", icon: NegativeThoughtIcon },
-    { name: "Solo Quiero Desahogarme", path: "/agente-desahogarme", icon: AgenteDesahogo },
-    { name: "Necesito Motivacion", path: "/agente-motivacion", icon: MotivationAgentIcon },
-    { name: "Ayuda con Mis Planes", path: "/agente-objetivos", icon: GoalsAgentIcon },
+    {
+      name: "Dr. John",
+      path: "/john-agent",
+      icon: JohnAgentIcon,
+      summary: "Psicólogo general con un enfoque integral para problemas psicológicos y de salud mental."
+    },
+    {
+      name: "Asistente Amanda",
+      path: "/amanda-agent",
+      icon: AmandaAgentIcon,
+      summary: "Secretaria personal para el manejo de tu agenda. Registra tus eventos y te ayuda a organizar tu tiempo."
+    },
+    {
+      name: "Dra. Sarah",
+      path: "/pap",
+      icon: SarahAgentIcon,
+      summary: "Especialista en Primeros Auxilios Psicológicos. Brinda orientación en situaciones de crisis emocional."
+    },
+    {
+      name: "Coach Mark",
+      path: "/mark-agent",
+      icon: MarkAgentIcon,
+      summary: "Especialista en relaciones personales, proporciona consejos y guías para mejorar la convivencia con familiares, amigos y compañeros de trabajo"
+    },
+    {
+      name: "Dr. David",
+      path: "/david-agent",
+      icon: DavidAgentIcon,
+      summary: "Experto en manejo de problemas de bipolaridad, con estrategias para mejorar la estabilidad emocional."
+    },
+    {
+      name: "Coach Nicole",
+      path: "/nicole-agent",
+      icon: NicoleAgentIcon,
+      summary: "Especialista en relaciones de pareja. Ofrece apoyo para manejar rupturas amorosas y problemas sentimentales."
+    },
+    {
+      name: "Dra. Emma",
+      path: "/emma-agent",
+      icon: EmmaAgentIcon,
+      summary: "Especialista en manejo de pensamientos negativos y desmotivación. Ofrece guías personalizadas y consejos para mejorar el bienestar emocional."
+    },
+    {
+      name: "Dra. Laura",
+      path: "/laura-agent",
+      icon: LauraAgentIcon,
+      summary: "Experta en control y prevención del estrés, ansiedad y depresión. Ideal para quienes buscan mejorar su salud mental general."
+    },
+    {
+      name: "Asistente Jessica",
+      path: "/jessica-agent",
+      icon: JessicaAgentIcon,
+      summary: "Tu asistente personal para el manejo de un diario. Puedes registrar/consultar tus experiencias diarias mediante texto o audio, y ella se encarga de organizarlas por fecha."
+    },
+    {
+      name: "Coach Robert",
+      path: "/robert-agent",
+      icon: RobertAgentIcon,
+      summary: "Experto en finanzas y desarrollo personal. Brinda apoyo para resolver problemas financieros y alcanzar metas a corto y largo plazo."
+    },
+       {
+      name: "Srita. Lisa",
+      path: "/lisa-agent",
+      icon: LisaAgentIcon,
+      summary: "Disponible para conversar cuando te sientas solo/a o necesites desahogarte. Es amigable y siempre dispuesta a escucharte."
+    },
+    {
+      name: "Marina",
+      path: "/agente-amigos",
+      icon: MarinaAgentIcon,
+      summary: "Asistente de la red de apoyo para situaciones de riesgo de suicidio. Brinda ayuda tanto a personas con pensamientos suicidas como a sus familiares."
+    },
   ];
 
-  // Click event handler to select an agent and navigate to the corresponding path
   const handleAgentClick = (path) => {
-    navigate(path); // Use navigate to change the route
+    navigate(path);
   };
 
   return (
@@ -46,14 +108,16 @@ const AgentesIA = () => {
       <main className="agents-container">
         <div className="icons-container">
           {agents.map((agent, index) => (
-            <div
-              key={index}
-              className="agent-card"
-              onClick={() => handleAgentClick(agent.path)}
-              style={{ cursor: 'pointer' }}
-            >
+            <div key={index} className="agent-card" style={{ cursor: 'pointer' }}>
               <img src={agent.icon} alt={`${agent.name} Icon`} className="agent-icon" />
-              <p>{agent.name}</p>
+              <h3>{agent.name}</h3>
+              <p>{agent.summary}</p>
+              <button
+                className="contact-button"
+                onClick={() => handleAgentClick(agent.path)}
+              >
+               ¡Hablemos!
+              </button>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './GoalsManager.css'; // Import custom styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPlus, faList, faRobot, faTimes} from '@fortawesome/free-solid-svg-icons';
-import AgenteObjetivos from '../AgentesIA/AgenteObjetivos'; // Import AgenteObjetivos component
+import RobertAgent from '../AgentesIA/RobertAgent'; // Import RobertAgent component
 
 const GoalsManager = () => {
   const [showForm, setShowForm] = useState(false);
@@ -14,7 +14,7 @@ const GoalsManager = () => {
   const [endDate, setEndDate] = useState('');
   const [reminder, setReminder] = useState('');
   const [description, setDescription] = useState('');
-  const [showAgenteObjetivos, setShowAgenteObjetivos] = useState(false); // State to manage AgenteObjetivos visibility
+  const [showAgenteObjetivos, setShowAgenteObjetivos] = useState(false); // State to manage RobertAgent visibility
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const GoalsManager = () => {
   };
 
   const handleBotIconClick = () => {
-    setShowAgenteObjetivos((prev) => !prev); // Toggle AgenteObjetivos visibility when the icon is clicked
+    setShowAgenteObjetivos((prev) => !prev); // Toggle RobertAgent visibility when the icon is clicked
   };
 
   return (
@@ -194,7 +194,7 @@ const GoalsManager = () => {
         <FontAwesomeIcon icon={faRobot} className="bot-icon" />
       </div>
 
-      {/* Render AgenteObjetivos if the bot icon is clicked */}
+      {/* Render RobertAgent if the bot icon is clicked */}
      {showAgenteObjetivos && (
   <div className="agente-objetivos">
     <span className="tooltip">
@@ -206,7 +206,7 @@ const GoalsManager = () => {
       </button>
       <span className="tooltiptext">Cerrar bot</span> {/* Tooltip text */}
     </span>
-    <AgenteObjetivos />
+    <RobertAgent />
   </div>
 )}
 

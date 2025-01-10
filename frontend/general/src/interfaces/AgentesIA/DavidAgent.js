@@ -4,7 +4,7 @@ import './AgentesStyles.css';
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AgenteObjetivos = () => {
+const DavidAgent = () => {
   const [messages, setMessages] = useState([]); // Fixed the hook
   const [input, setInput] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -13,15 +13,16 @@ const AgenteObjetivos = () => {
   const chatEndRef = useRef(null);
 
   const agents = [
-    { name: 'General', path: '/agente-general' },
-    { name: 'Diario Personal', path: '/agente-diario' },
-    { name: 'Familia', path: '/agente-familia' },
-    { name: 'Amigos', path: '/agente-amigos' },
-    { name: 'Yo en el Amor', path: '/agente-love' },
-    { name: 'Pensamiento Negativo', path: '/agente-negativo' },
-    { name: 'Solo Quiero Desahogarme', path: '/agente-desahogarme' },
-    { name: 'Necesito Motivacion', path: '/agente-motivacion' },
-    { name: 'Ayuda con Mis Planes', path: '/agente-objetivos' }
+   { name: 'John', path: '/john-agent' },
+    { name: 'Nicole', path: '/nicole-agent' },
+    { name: 'Amanda', path: '/amanda-agent' },
+    { name: 'Lisa', path: '/lisa-agent' },
+    { name: 'Robert', path: '/robert-agent' },
+    { name: 'Emma', path: '/emma-agent' },
+    { name: 'Jessica', path: '/jessica-agent' },
+    { name: 'Laura', path: '/laura-agent' },
+    { name: 'Mark', path: '/mark-agent' },
+    {name: 'Marina', path: '/marina-agent'}
   ];
 
   const navigate = useNavigate(); // Initialize the navigate hook
@@ -44,11 +45,10 @@ const AgenteObjetivos = () => {
       setShowProfileOptions(false);
       setInput('');
 
-      // Example response from the bot
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: 'Hi! Necesitas organizar tus planes? O alcanzar tus metas? Puedes manejar tus objetivos aquí.' }
+          { type: 'bot', text: 'Hi! Soy el DavidAgent hablemos sobre nuestras amistades!' }
         ]);
       }, 500);
     }
@@ -78,16 +78,6 @@ const AgenteObjetivos = () => {
       default:
         console.log(`${option} clicked`);
     }
-  };
-
-  // New function to handle managing objectives
-  const handleManageObjectives = () => {
-    navigate('/manage-objectives'); // Navigate to the goal manager page
-    // Load initial messages if needed
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { type: 'bot', text: 'Bienvenido/a a la gestión de objetivos. ¿Cómo puedo ayudarte hoy?' }
-    ]);
   };
 
   useEffect(() => {
@@ -125,16 +115,15 @@ const AgenteObjetivos = () => {
                 {agent.name}
               </p>
             ))}
-            <p className="agent-option" onClick={handleManageObjectives}>Manejar Objetivos</p> {/* New option */}
           </div>
         )}
       </div>
 
-        <div className="chat-container">
+      <div className="chat-container">
         {/* Welcome message */}
         <div className="welcome-message bot-message">
           <img
-              src={require('../../assets/images/goal-agent.png')}
+              src={require('../../assets/images/David.jpeg')}
               alt="Welcome Icon"
               className="message-icon"
           />
@@ -150,7 +139,7 @@ const AgenteObjetivos = () => {
               >
                 {message.type === 'bot' ? (
                     <img
-                        src={require('../../assets/images/goal-agent.png')}
+                        src={require('../../assets/images/David.jpeg')}
                         alt="Bot Icon"
                         className="message-icon"
                     />
@@ -166,7 +155,7 @@ const AgenteObjetivos = () => {
         <div className="input-container">
           <FontAwesomeIcon icon={faImage} className="icon-left" title="Subir imagen" />
           <textarea
-            placeholder="Necesitas organizar tus planes? O alcanzar tus metas?, escribeme un mensaje para empezar a trabajar juntos"
+            placeholder="Soy el DavidAgent hablemos sobre nuestras amistades!, escribe tu mensaje"
             value={input}
             onChange={handleInputChange}
             maxLength={1500}
@@ -187,4 +176,4 @@ const AgenteObjetivos = () => {
   );
 };
 
-export default AgenteObjetivos;
+export default DavidAgent;

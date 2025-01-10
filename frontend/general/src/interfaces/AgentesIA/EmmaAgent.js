@@ -4,7 +4,7 @@ import './AgentesStyles.css';
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AgenteAmigos = () => {
+const EmmaAgent = () => {
   const [messages, setMessages] = useState([]); // Fixed the hook
   const [input, setInput] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -13,15 +13,16 @@ const AgenteAmigos = () => {
   const chatEndRef = useRef(null);
 
   const agents = [
-    { name: 'General', path: '/agente-general' },
-    { name: 'Diario Personal', path: '/agente-diario' },
-    { name: 'Familia', path: '/agente-familia' },
-    { name: 'Amigos', path: '/agente-amigos' },
-    { name: 'Yo en el Amor', path: '/agente-love' },
-    { name: 'Pensamiento Negativo', path: '/agente-negativo' },
-    { name: 'Solo Quiero Desahogarme', path: '/agente-desahogarme' },
-    { name: 'Necesito Motivacion', path: '/agente-motivacion' },
-    { name: 'Ayuda con Mis Planes', path: '/agente-objetivos' }
+    { name: 'John', path: '/john-agent' },
+    { name: 'Nicole', path: '/nicole-agent' },
+    { name: 'Amanda', path: '/amanda-agent' },
+    { name: 'Lisa', path: '/lisa-agent' },
+    { name: 'Robert', path: '/robert-agent' },
+    { name: 'David', path: '/david-agent' },
+    { name: 'Jessica', path: '/jessica-agent' },
+    { name: 'Laura', path: '/laura-agent' },
+    { name: 'Mark', path: '/mark-agent' },
+    {name: 'Marina', path: '/marina-agent'}
   ];
 
   const navigate = useNavigate(); // Initialize the navigate hook
@@ -47,7 +48,7 @@ const AgenteAmigos = () => {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: 'Hi! Soy el AgenteAmigos hablemos sobre nuestras amistades!' }
+          { type: 'bot', text: 'Hi! Si tienes pensamientos negativos, estoy aqui para ayudarte a superarlos' }
         ]);
       }, 500);
     }
@@ -118,11 +119,11 @@ const AgenteAmigos = () => {
         )}
       </div>
 
-      <div className="chat-container">
+         <div className="chat-container">
         {/* Welcome message */}
         <div className="welcome-message bot-message">
           <img
-              src={require('../../assets/images/friends-agent.png')}
+              src={require('../../assets/images/Emma.jpeg')}
               alt="Welcome Icon"
               className="message-icon"
           />
@@ -138,7 +139,7 @@ const AgenteAmigos = () => {
               >
                 {message.type === 'bot' ? (
                     <img
-                        src={require('../../assets/images/friends-agent.png')}
+                        src={require('../../assets/images/Emma.jpeg')}
                         alt="Bot Icon"
                         className="message-icon"
                     />
@@ -154,7 +155,7 @@ const AgenteAmigos = () => {
         <div className="input-container">
           <FontAwesomeIcon icon={faImage} className="icon-left" title="Subir imagen" />
           <textarea
-            placeholder="Soy el AgenteAmigos hablemos sobre nuestras amistades!, escribe tu mensaje"
+            placeholder="Si tienes pensamientos negativos, estoy aqui para ayudarte a superarlos, escribeme un mensaje para empezar"
             value={input}
             onChange={handleInputChange}
             maxLength={1500}
@@ -175,4 +176,4 @@ const AgenteAmigos = () => {
   );
 };
 
-export default AgenteAmigos;
+export default EmmaAgent;

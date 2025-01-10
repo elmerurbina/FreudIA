@@ -12,19 +12,19 @@ import IdentificationPanel from "./interfaces/IdentificationPanel/Identification
 import Reportes from "./interfaces/Reportes/Reportes"; // Import the Reportes component
 import GoalsManager from "./interfaces/GolasManager/GoalsManager";
 import PsychologistsDirective from "./interfaces/PsychologistsDirective/PsychologistsDirective";
-import AgenteFamilia from "./interfaces/AgentesIA/AgenteFamilia";
+import MarkAgent from "./interfaces/AgentesIA/MarkAgent";
 import MeditationPlaces from "./interfaces/Places/MeditationPlaces";
 import RunningPlaces from "./interfaces/Places/RunningPlaces";
 import RelaxingPlaces from "./interfaces/Places/RelaxingPlaces";
-import AgenteObjetivos from "./interfaces/AgentesIA/AgenteObjetivos";
-import AgenteAmigos from "./interfaces/AgentesIA/AgenteAmigos";
+import RobertAgent from "./interfaces/AgentesIA/RobertAgent";
+import DavidAgent from "./interfaces/AgentesIA/DavidAgent";
 import './App.css';
-import AgenteGeneral from "./interfaces/AgentesIA/AgenteGeneral";
-import AgenteDiario from "./interfaces/AgentesIA/AgenteDiario";
-import AgenteLove from "./interfaces/AgentesIA/AgenteLove";
-import AgenteNegativo from "./interfaces/AgentesIA/AgenteNegativo";
-import AgenteDesahogarme from "./interfaces/AgentesIA/AgenteDesahogarme";
-import AgenteMotivacion from "./interfaces/AgentesIA/AgenteMotivacion";
+import JohnAgent from "./interfaces/AgentesIA/JohnAgent";
+import AmandaAgent from "./interfaces/AgentesIA/AmandaAgent";
+import NicoleAgent from "./interfaces/AgentesIA/NicoleAgent";
+import EmmaAgent from "./interfaces/AgentesIA/EmmaAgent";
+import LauraAgent from "./interfaces/AgentesIA/LauraAgent";
+import JessicaAgent from "./interfaces/AgentesIA/JessicaAgent";
 import Notifications from "./interfaces/Notifications/Notifications";
 import GuiasPersonalizadas from "./interfaces/GuiasPersonalizadas/GuiasPersonalizadas";
 
@@ -49,15 +49,15 @@ const App = () => {
             <Route path="/meditation" element={<MeditationPlaces />} />
             <Route path="/running-places" element={<RunningPlaces />} />
             <Route path="/relaxing" element={<RelaxingPlaces />} />
-            <Route path="/agente-general" element={<AgenteGeneral />} />
-            <Route path="/agente-diario" element={<AgenteDiario />} />
-            <Route path="/agente-familia" element={<AgenteFamilia />} />
-            <Route path="/agente-amigos" element={<AgenteAmigos />} />
-            <Route path="/agente-love" element={<AgenteLove />} />
-            <Route path="/agente-negativo" element={<AgenteNegativo />} />
-            <Route path="/agente-desahogarme" element={<AgenteDesahogarme />} />
-            <Route path="/agente-motivacion" element={<AgenteMotivacion />} />
-            <Route path="/agente-objetivos" element={<AgenteObjetivos />} />
+            <Route path="/john-agent" element={<JohnAgent />} />
+            <Route path="/amanda-agent" element={<AmandaAgent />} />
+            <Route path="/mark-agent" element={<MarkAgent />} />
+            <Route path="/david-agent" element={<DavidAgent />} />
+            <Route path="/nicole-agent" element={<NicoleAgent />} />
+            <Route path="/emma-agent" element={<EmmaAgent />} />
+            <Route path="/laura-agent" element={<LauraAgent />} />
+            <Route path="/jessica-agent" element={<JessicaAgent />} />
+            <Route path="/robert-agent" element={<RobertAgent />} />
             <Route path="/notifications" element={<Notifications />} />
 
           </Routes>

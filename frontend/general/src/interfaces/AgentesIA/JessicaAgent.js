@@ -4,7 +4,7 @@ import './AgentesStyles.css';
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AgenteMotivacion = () => {
+const JessicaAgent = () => {
   const [messages, setMessages] = useState([]); // Fixed the hook
   const [input, setInput] = useState('');
   const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -13,15 +13,16 @@ const AgenteMotivacion = () => {
   const chatEndRef = useRef(null);
 
   const agents = [
-    { name: 'General', path: '/agente-general' },
-    { name: 'Diario Personal', path: '/agente-diario' },
-    { name: 'Familia', path: '/agente-familia' },
-    { name: 'Amigos', path: '/agente-amigos' },
-    { name: 'Yo en el Amor', path: '/agente-love' },
-    { name: 'Pensamiento Negativo', path: '/agente-negativo' },
-    { name: 'Solo Quiero Desahogarme', path: '/agente-desahogarme' },
-    { name: 'Necesito Motivacion', path: '/agente-motivacion' },
-    { name: 'Ayuda con Mis Planes', path: '/agente-objetivos' }
+    { name: 'John', path: '/john-agent' },
+    { name: 'Nicole', path: '/nicole-agent' },
+    { name: 'Amanda', path: '/amanda-agent' },
+    { name: 'Lisa', path: '/lisa-agent' },
+    { name: 'Robert', path: '/robert-agent' },
+    { name: 'Emma', path: '/emma-agent' },
+    { name: 'David', path: '/david-agent' },
+    { name: 'Laura', path: '/laura-agent' },
+    { name: 'Mark', path: '/mark-agent' },
+    {name: 'Marina', path: '/marina-agent'}
   ];
 
   const navigate = useNavigate(); // Initialize the navigate hook
@@ -122,7 +123,7 @@ const AgenteMotivacion = () => {
         {/* Welcome message */}
         <div className="welcome-message bot-message">
           <img
-              src={require('../../assets/images/motivation-agent.png')}
+              src={require('../../assets/images/Jessica.jpeg')}
               alt="Welcome Icon"
               className="message-icon"
           />
@@ -138,7 +139,7 @@ const AgenteMotivacion = () => {
               >
                 {message.type === 'bot' ? (
                     <img
-                        src={require('../../assets/images/motivation-agent.png')}
+                        src={require('../../assets/images/Jessica.jpeg')}
                         alt="Bot Icon"
                         className="message-icon"
                     />
@@ -175,4 +176,4 @@ const AgenteMotivacion = () => {
   );
 };
 
-export default AgenteMotivacion;
+export default JessicaAgent;
