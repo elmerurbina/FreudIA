@@ -1,0 +1,172 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+}
+
+h2 {
+  margin-top: 20px;
+  color: #333;
+}
+
+h3 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex: 1;
+}
+
+.add-button:hover {
+  background-color: #2575fc;
+}
+
+/* Ensure the secondary button is correctly styled in the form */
+.entry-form .secondary-button {
+  background: #ff4081;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.entry-form .secondary-button:hover {
+  background: #ff79b0;
+}
+
+
+/* Forms */
+.entry-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.entry-form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+.entry-form input,
+.entry-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.entry-form textarea {
+  height: 100px;
+}
+
+.entry-form button {
+  padding: 10px 20px;
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.entry-form button:hover {
+  background-color: #2575fc;
+}
+
+/* Patient Info, Medical History, Prescriptions, Diagnostic Tests Sections */
+section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  margin-bottom: 15px;
+}
+
+section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+section table th,
+section table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+section table th {
+  background-color: #f4f7fc;
+}
+
+section table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+section .message {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  .entry-form input,
+  .entry-form textarea {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 15px;
+  }
+}

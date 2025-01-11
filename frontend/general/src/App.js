@@ -30,6 +30,7 @@ import JessicaAgent from "./interfaces/AgentesIA/JessicaAgent";
 import SarahAgent from "./interfaces/AgentesIA/SarahAgent";
 import Notifications from "./interfaces/Notifications/Notifications";
 import GuiasPersonalizadas from "./interfaces/GuiasPersonalizadas/GuiasPersonalizadas";
+import Expediente from "./interfaces/PatientsManagement/Expediente";
 
 const App = () => {
   return (
@@ -65,6 +66,7 @@ const App = () => {
             <Route path="/sarah-agent" element={<SarahAgent />} />
             <Route path="/robert-agent" element={<RobertAgent />} />
             <Route path="/notifications" element={<Notifications />} />
+            <Route path="/expediente" element={<Expediente />} />
 
           </Routes>
         </main>
