@@ -1,18 +1,19 @@
 /* General styles */
-body, html {
+.SupportForm {
     font-family: Arial, sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-y: auto; /* Allow vertical scrolling */
     background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
 }
 
 .form-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 220px; /* Adjust padding for better responsiveness */
-    background-color: #f4f4f4;
+     background: linear-gradient(to right, #6a11cb, #2575fc);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: auto; /* Allow content inside the form to scroll if needed */

@@ -6,8 +6,8 @@
   overflow: hidden;
   position: fixed;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(204, 66, 225, 0.5);
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 100%; /* Ensures the container spans the full width of the screen */
   height: 60vh; /* Adjust if needed */
   top: 37%;
   left: 50%;
@@ -83,6 +83,7 @@
   flex-grow: 1;
   padding: 10px;
   overflow-y: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 40px; /* Added margin to create separation */
@@ -118,9 +119,10 @@
   font-family: 'Helvetica', sans-serif;
   font-size: 0.9rem;
   border-radius: 10px;
-  padding: 10px;
+  margin-left: auto;
+  padding: 0.8rem 10px;
+  width: 400px;
   color: white;
-  margin: 5px;
   max-width: 75%;
 }
 
@@ -131,8 +133,9 @@
   font-size: 0.9rem;
   font-family: 'Helvetica', sans-serif;
   border-radius: 10px;
-  padding: 10px;
-  margin: 5px;
+  padding: 0.8rem 10px;
+  width: 400px;
+  margin: 5px 20px 5px 10px;
   max-width: 75%;
 }
 
@@ -145,25 +148,31 @@
 .input-container {
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 20px;
-  width: 90%;
-  max-width: 600px;
+  justify-content: space-between; /* Separa los elementos */
+  flex-wrap: nowrap;
+  margin-top: auto;
+  width: 100%; /* Ensures full width */
+  max-width: 600px; /* Keeps the container within a max width */
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, rgba(0, 102, 204, 1), rgba(0, 51, 153, 1));
   padding: 10px;
   border-radius: 20px;
+  position: relative;  /* Keeps it in normal document flow, no fixed position */
 }
 
 .chat-input {
-  flex-grow: 1;
+  flex-grow: 1;           /* Makes chat-input take up all available space inside the container */
   border: none;
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   resize: none;
+  box-sizing: border-box; /* Ensures padding doesn't affect the layout */
+  white-space: normal;    /* Ensures text wraps correctly */
+  overflow: hidden;       /* Prevents overflow text */
+  word-wrap: break-word;
 }
 
 .chat-input::placeholder {
@@ -245,35 +254,35 @@
 /* Medium devices (600px and above) */
 @media (min-width: 600px) {
   .agente-ia {
-    width: 80%;
+    width: 90%;
     height: 65vh;
   }
 
   .input-container {
-    width: 80%;
+    width: 90%;
   }
 }
 
 /* Large devices (768px and above) */
 @media (min-width: 768px) {
   .agente-ia {
-    width: 60%;
+    width: 80%;
     height: 60vh;
   }
 
   .input-container {
-    width: 60%;
+    width: 80%;
   }
 }
 
 /* Extra large devices (1200px and above) */
 @media (min-width: 1200px) {
   .agente-ia {
-    width: 50%;
+    width: 70%;
     height: 50vh;
   }
 
   .input-container {
-    width: 50%;
+    width: 70%;
   }
 }

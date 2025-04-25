@@ -10,12 +10,14 @@
 
 .about-us {
   margin-bottom: 30px;
+  background: linear-gradient(135deg, rgba(65, 32, 137, 1), rgba(47, 23, 99, 1));
 }
 
 .about-us h2 {
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
+  color: white;
 }
 
 .about-us p {
@@ -23,12 +25,14 @@
   line-height: 1.5;
   margin-left: 25%;
   margin-right: 25%;
+
 }
 
 .video-section {
   margin-bottom: 30px;
   margin-top: 150px;
   text-align: center;
+  background: linear-gradient(135deg, rgba(65, 32, 137, 1), rgba(47, 23, 99, 1));
 }
 
 video {
